@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script> 
+	$(function(){ // I use jQuery in this example
+      
+           function () { close(){$(".flip").click(function(){
+    $(".panel").slideUp("slow");
+  });
+   });
+   });
+$(document).ready(function(){
+  $(".flip").click(function(){
+    $(".panel").slideToggle("slow");
+  });
+});
+</script>
+   
+
+    <title>Chapter-23</title>
+<link rel="stylesheet" href="css/style.css" type="text/css"/>
+<style>
+.list {list-style-type:none}
+.list > li {display:inline;
+			float:left;}
+</style>
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="css/agency.css" rel="stylesheet">
+
+
+   
+</head>
+
+<body id="page-top" class="index">
+
+    <!-- Navigation -->
+    
+<div class="header" style="background-image:url('head.jpg'); background-repeat:no-repeat; background-position:top;margin:0 auto;
+
+	overflow:hidden;">
+	<div class="wrap">
+		<div style="">
+		<center><h1><font size="100px"><a href="../index.html"><img src="intro.jpg"></a></font></h1><center>
+		</div>
+		<div class="cname" style="font-family: Arial black, Georgia, Serif">
+			
+         <center><h1><font type="Arial black">Chapter-23</h1></center>
+		</div>	
+		<div class="clear"><center><h2><font color="#346fa1">Minimum Spanning Trees</font></h2></center></div>
+	</div>
+</div>
+   
+ <div class="container" style="background-image:url('tail.jpg');background-repeat:no-repeat;background-position:top;margin:0 auto;
+
+	overflow:hidden;margin-top:-50px">
+    <section id="content" >
+      <div class="inside">
+        <br><br><center><h2>All Questions</h2></center>
+        <div class="left" style="width:100%">
+        <ul class="list">
+		<br/>
+	  
+          <li style="margin-left:130px;width:23%"><img src="icon1.png">
+            <h4><a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
+                       Kruskal MST
+                         </a></h4>
+			
+
+			<a href="kruskal.cpp" style="margin-top:-50px" download>Download</a>
+            <br/>
+			<br>
+			<br/>
+			<br>
+          </li>
+          <li style="width:23%"><img src="icon1.png">
+            <a href=""><h4><a href="#portfolioModal2" class="portfolio-link" data-toggle="modal">Fibonnaci</a></h4></a>
+            <a href="fibonacci1.cpp" download>Download</a>
+          <br/><br/>
+			<br>
+			<br>
+		  </li>
+          <li style="width:20%"><img src="icon1.png">
+            <a href=""><h4><a href="#portfolioModal3" class="portfolio-link" data-toggle="modal">Prim MST</a></h4></a>
+            <a href="prim.cpp" download>Download</a>
+			<br/><br/>
+			<br>
+			<br>
+          </li>
+	
+        </ul>
+      </div>
+	  
+	   </div>
+	  <br/>
+	  <br/>
+	  <br/>
+	  <br/>
+	  <br/>
+	  <br/>
+	  <br/>
+	  <br/>
+	  <br/>
+	  <br/>
+	  <br/>
+	  <br/><br/>
+	  <br/>
+	  
+	<center><p class="lf">Copyright &copy;  <a href="http://www.httpcart.com/">httpcart.com</a> - All Rights Reserved</p>
+    <p class="rf">A product of <a href="http://www.httpcart.com/">httpcart.com</a></p></center>
+      </div>
+    </section>
+	
+</div>
+    
+                
+                  
+                    
+                
+           
+    <!-- Portfolio Modals -->
+    <!-- Use the modals below to showcase details about your portfolio projects! -->
+
+    <!-- Portfolio Modal 1 -->
+	
+    <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true" >
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <!-- Project Details Go Here -->
+                             
+                            <p class="item-intro text-muted">  <pre class='brush: cpp'>#include&ltiostream&gt
+#include&ltcmath&gt
+#include&ltlist&gt
+#include&ltstack&gt
+#include&ltutility>
+#include&ltbitset&gt
+#include&ltqueue>
+#include&ltvector&gt
+#include&ltstring&gt
+#include&ltalgorithm&gt
+#include &ltmap&gt
+#define INF (1&lt&lt30)
+#define null NULL
+#define fi(sz) for(int i=0;i&ltsz;i++)
+#define fj(sz) for(int j=0;j&ltsz;j++) 
+#define pb push_back
+#define all(v) (v).begin(),(v).end()
+#define SP system("pause");
+#define OP cout&lt&ltendl
+#define WHITE 0
+#define GRAY 1
+#define BLACK 2
+using namespace std;
+
+
+struct node{
+       list&ltpair&ltnode* ,int> > child; // child
+       node* parent;
+       int rank;
+       int index;//vertex index
+        };
+
+bool myfunc(pair&ltpair&ltint,int&gt ,int> a,pair&ltpair&ltint,int&gt ,int> b){return a.second&ltb.second;}
+
+class graph_alg{
+vector&ltnode* > v;int time; 
+vector&ltpair&ltpair&ltint,int&gt ,int> > gmatrix;
+
+public:
+       graph_alg(int n){v.resize(n,null);time=0;}
+
+      node* getelement(int i){return v[i];}
+
+ 
+      node* link(node* x,node* y){
+            if(x->rank>y->rank){y->parent=x;return x;}
+            else{
+                 x->parent=y;
+                 if(x->rank==y->rank)y->rank+=1;
+                 return y;}
+            }//link finish
+      
+      node* union_set(node* x,node* y){return link(find_set(x),find_set(y));}//union finish
+      
+      node* find_set(node* x){
+            if(x!=x->parent)return (x->parent=find_set(x->parent));
+            return x;
+            }//find set close
+     
+vector&ltpair&ltpair&ltint,int&gt ,int> > kruskal_MST_matrix(){
+     vector&ltpair&ltpair&ltint,int&gt ,int> > temp;
+   sort(gmatrix.begin(),gmatrix.end(),myfunc); 
+   //cout&lt&lt"start";OP;    
+   for(int i=0;i&ltgmatrix.size();i++){
+           //cout&lt&ltgmatrix[i].first.first&lt&lt" "&lt&ltgmatrix[i].first.second&lt&lt"  "&lt&ltv[gmatrix[i].first.first]->data;
+           if(find_set(v[gmatrix[i].first.first])!=find_set(v[gmatrix[i].first.second])){
+              //                    cout&lt&lt"start";
+                                  temp.push_back(gmatrix[i]);
+                                  union_set(v[gmatrix[i].first.first],v[gmatrix[i].first.second]);                                            
+                                                                              }//if finsh
+           }//for finsh  
+    
+    return temp;       
+     }//kruskal mst finish     
+
+void make_graph_matrix(){
+     get_data();
+     cout&lt&ltendl&lt&lt"Enter no of edges ";int temp;cin>>temp;
+     for(int i=0;i&lttemp;i++){
+             int temp1,temp2,temp3;
+             cout&lt&lt"Enter starting vertex , ending vertex and edge cost ";OP;
+             cin>>temp1>>temp2>>temp3;
+             gmatrix.push_back(make_pair(make_pair(temp1,temp2),temp3));
+             }//for dinish
+     }//make graph matrix finish
+     
+vector&ltpair&ltpair&ltint,int&gt ,int> >  kruskal(){
+     
+     for(int i=0;i&ltv.size();i++){
+             for(list&ltpair&ltnode* ,int> > :: iterator it=v[i]->child.begin();it!=v[i]->child.end();it++){
+                                 gmatrix.push_back(make_pair(make_pair(i,(*it).first->index),(*it).second));
+                                 }//inner for finsh
+             }//outer for funsh
+     return kruskal_MST_matrix();
+     }     
+     
+void make_graph(){
+     get_data();
+     for(int i=0;i&ltv.size();i++){
+
+     cout&lt&lt"enter no. of edges connected to "&lt&lt(i)&lt&lt"th vertex,index and the edge cost";OP;
+             int temp1;cin>>temp1;
+             for(int j=0;j&lttemp1;j++){
+                      int temp2,temp3;cin>>temp2>>temp3;;
+                      make_link(i,temp2,temp3);
+                     }
+             }
+     }//make arbitrary graph
+
+void make_link(int i,int j,int k){
+     v[i]->child.push_back(make_pair(v[j],k));
+     }//make link finish
+
+node* make_node(){
+     node* temp=new node;
+     temp->parent=temp;
+     temp->rank=0;
+     return temp;
+     }//make node finish
+
+node* make_index(int i){
+node* temp=make_node();
+temp->index=i;
+return temp;
+}//make index finsh
+
+void get_data(){
+     cout&lt&lt"enter "&lt&ltv.size()&lt&lt" vertices value";OP;
+     for(int i=0;i&ltv.size();i++){
+             v[i]=make_index(i);
+             }
+     }//get data finish
+
+};
+int main(){
+    cout&lt&lt"Enter No of vertices";OP;
+    int n;cin>>n;
+    graph_alg ga(n);
+    ga.make_graph_matrix();OP;
+    cout&lt&lt" going kruskal ";OP;
+    vector&ltpair&ltpair&ltint,int&gt ,int> > gmatrix=ga.kruskal_MST_matrix();
+    for(int i=0;i&ltgmatrix.size();i++){
+          cout&lt&ltendl&lt&ltgmatrix[i].first.first&lt&lt"  "&lt&ltgmatrix[i].first.second&lt&lt"  "&lt&ltgmatrix[i].second;
+        } 
+    OP;SP;
+    }
+/*
+9
+14
+0 1 4
+1 2 8
+2 3 7
+3 4 9
+4 5 10
+5 6 2
+6 7 1
+7 0 8
+1 7 11
+7 8 7
+8 2 2
+8 6 6
+2 5 4
+3 5 14 
+*/
+</p>
+	<br><br>
+<a href="kruskal.cpp" download><button type="button">Download</button></a>	
+                           
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true" >
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <!-- Project Details Go Here -->
+                             
+                            <p class="item-intro text-muted">  <pre class='brush: cpp'>#include&ltiostream>
+#include&ltcmath>
+#include&ltlist>
+#include&ltstack>
+#include&ltutility>
+#include&ltbitset>
+#include&ltqueue>
+#include&ltvector>
+#include&ltstring>
+#include&ltalgorithm>
+#include &ltmap>
+#define INF (1&lt&lt30)
+#define null NULL
+#define fi(sz) for(int i=0;i&ltsz;i++)
+#define fj(sz) for(int j=0;j&ltsz;j++)
+#define pb push_back
+#define all(v) (v).begin(),(v).end()
+#define SP system("pause");
+#define OP cout&lt&ltendl
+#define WHITE 0
+#define GRAY 1
+#define BLACK 2
+using namespace std;
+
+struct node1{
+       list&ltpair&ltnode1* ,int> > child; // prim node child
+       int index;//vertex index
+       int ds;//prim dista
+       node1* pd;//predecessor
+       bool present;
+       int fb;
+       };
+
+struct node{
+node1* data;
+int deg;
+bool mark;
+list&ltnode* > child;//fibnacci child
+node* sib;
+node* prev;
+node* parent;
+            };
+
+
+class fib_heap{
+      node* min;int num;list&ltnode* > root;
+      public:
+
+      fib_heap(){num=0;min=null;}
+
+     void fib_consolidate(){
+
+                        int yl=log10(num*num)/log10(2);yl=yl*yl+1;
+                        node* ss=null;
+          vector<node* > v(yl,ss);
+          while(!root.empty()){
+                      node* x=root.front();
+                      root.pop_front();
+                      int degree=x->deg;
+                      while(v[degree]!=null){
+                              node* y=v[degree];
+                              if(x->data->ds>y->data->ds){
+                                                  swap(x,y);
+                                                  }
+                             fib_link(y,x);
+                              v[degree]=null;
+                              degree+=1;
+                              }//inner while finish
+                          v[degree]=x;
+
+                      }//while finish
+          min=null;
+
+          for(int i=0;i&ltv.size();i++){
+                  if(v[i]!=null){root.push_back(v[i]);
+                                 if(min==null || v[i]->data->ds<min->data->ds){min=v[i];  }
+                                 }
+                  }
+
+          }//conso finish
+
+
+     void swap(node* &x,node* &y) {
+
+          node* temp=x;
+          x=y;
+          y=temp;
+          }//swap finish
+
+      node* get_min(){return min;}//get min finsh
+
+      void fib_extract_min(){
+
+           node* z=min;
+
+           if(z!=null){
+                      z->data->present=false;
+                      while(!z->child.empty()){
+                                               node *temp=z->child.front();
+                                               z->child.pop_front();
+                                               fib_insert_ii(temp);
+                                               root.push_back(temp);
+                                               }
+                      {
+                       node* prev=z->prev;
+                       node* next=z->sib;
+                       prev->sib=next;
+                       next->prev=prev;
+                       min=next;
+                       root.remove(z);
+                       }
+
+                       if(z==z->sib){min=null;}
+                       else{
+
+                             fib_consolidate();  }
+                      num-=1;
+                       z->data->present=false;
+                       }
+           }//fin extract min
+
+      void fib_link(node* z,node* y){
+             node* prev=z->prev;
+                       node* next=z->sib;
+                       prev->sib=next;
+                       next->prev=prev;
+                       z->parent=y;
+                       if(!y->child.empty()){
+                       z->sib=y->child.front();
+                       y->child.front()->prev=z;
+                       z->prev=y->child.back();
+                       y->child.back()->sib=z;
+                       }else{z->sib=null;z->prev=null;}
+                       z->mark=false;
+                    y->child.push_front(z);
+                    y->deg+=1;
+           }//fib link close
+
+     void cut(node* x,node* y){
+          y->child.remove(x);
+          fib_insert_ii(x);
+          root.push_back(x);
+          x->mark=false;
+          }//cut finish
+
+     void cascading_cut(node* y){
+          node* z=y->parent;
+          if(z!=null){
+                      if(!y->mark){y->mark=true;}
+                      else{
+                           cut(y,z);
+                           cascading_cut(z);
+                           }
+                      }
+          }//ccut finish
+
+     void fib_decrease_key(node* x,int k){
+
+          if(x->data->ds&ltk){cout&lt&lt"greater key error"; return ;}
+          x->data->ds=k;
+          node* y=x->parent;
+
+          if(y!=null && y->data->ds > x->data->ds){
+                     cut(x,y);
+                     cascading_cut(y);
+                     }
+
+          if(x->data->ds&ltmin->data->ds){min=x;}
+
+          }//decrease key finish
+
+      void fib_delete(node* x){
+           int p=min->data->ds-1;
+           fib_decrease_key(x,p);
+           fib_extract_min();
+           }//fib delete finish
+
+     bool empty(){if(min==null)return true;return false;};
+
+     node* make_node(node1 *pp){
+           node* temp=new node;
+           temp->data=pp;
+           temp->deg=0;
+           temp->mark=false;
+           temp->parent=null;
+           temp->prev=null;
+           temp->sib=null;
+           temp->data->present=true;
+           temp->data->fb=(int)temp;
+        return temp;
+           }//make node finish
+
+     void fib_insert(node1 *pp){
+           node* p=make_node(pp);
+          fib_insert_ii(p);
+          if(min==null || min->data->ds>p->data->ds){min=p;}
+          root.push_back(p);
+          num+=1;
+          }//fin insert finish
+
+     void fib_insert_ii(node* p){
+          node* prev=null;
+          if(min!=null){
+          prev=min->prev;
+          prev->sib=p;
+          p->prev=prev;
+          min->prev=p;
+          p->sib=min;
+          }else{p->prev=p;p->sib=p;}
+          p->parent=null;
+           }//insert ii  finish
+
+     list&ltnode* > gethead(){
+                return  root;}
+      };
+
+
+</p>
+          <br><br>
+ <a href="fibonacci1.cpp" download><button type="button">Download</button></a>						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true" >
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <!-- Project Details Go Here -->
+                             
+                            <p class="item-intro text-muted">  <pre class='brush: cpp'>#include&ltiostream&gt
+#include&ltcmath&gt
+#include&ltlist&gt
+#include&ltstack&gt
+#include&ltutility>
+#include&ltbitset&gt
+#include&ltqueue>
+#include&ltvector&gt
+#include&ltstring&gt
+#include&ltalgorithm&gt
+#include &ltmap&gt
+#define INF (1&lt&lt30)
+#define null NULL
+#define fi(sz) for(int i=0;i&ltsz;i++)
+#define fj(sz) for(int j=0;j&ltsz;j++) 
+#define pb push_back
+#define all(v) (v).begin(),(v).end()
+#define SP system("pause");
+#define OP cout&lt&ltendl
+#define WHITE 0
+#define GRAY 1
+#define BLACK 2
+using namespace std;
+#include "fibonacci.cpp"
+
+
+    
+class graph_alg{
+vector&ltnode1* > v;int time; 
+vector&ltpair&ltpair&ltint,int&gt ,int> > gmatrix;
+vector&ltnode1* > mst;
+fib_heap *fh;
+public:
+      graph_alg(int n,fib_heap gg){fh=&gg;v.resize(n,null);time=0;}
+
+      node1* getelement(int i){return v[i];}
+
+ 
+void make_graph_matrix(){
+     get_data();
+     cout&lt&ltendl&lt&lt"Enter no of edges ";int temp;cin>>temp;
+     for(int i=0;i&lttemp;i++){
+             int temp1,temp2,temp3;
+             cout&lt&lt"Enter starting vertex , ending vertex and edge cost ";OP;
+             cin>>temp1>>temp2>>temp3;
+             gmatrix.push_back(make_pair(make_pair(temp1,temp2),temp3));
+             }//for dinish
+     }//make graph matrix finish
+
+void l(string s){cout&lt&lts;OP;}
+
+pair&ltvector&ltnode1* >,int> prim_MST(){
+     if(v.empty()){cout&lt&lt"empty graph";return make_pair(mst,0);}
+     v[0]->ds=0;
+     for(int i=0;i&ltv.size();i++){
+             fh->fib_insert(v[i]);
+             }//for finsh
+                   int t_cost=0;               
+    
+     while(!fh->empty()){
+                         node1 *x=fh->get_min()->data;
+                         fh->fib_extract_min();
+                         mst.push_back(x);
+                          
+                          t_cost+=x->ds;
+        
+          
+                         for(list&ltpair&ltnode1* ,int> > :: iterator it=x->child.begin();it!=x->child.end();it++){
+                                          
+                                              if((*it).first->present && (*it).second&lt(*it).first->ds){
+                                                                      (*it).first->pd=x;
+                                                                      node* tr=(node* )(*it).first->fb;
+                                                                        fh->fib_decrease_key(tr,(*it).second);
+                                                                      }//fi
+                                              }//for finish
+                         
+                         }//while finish
+   // */                     
+     return make_pair(mst,t_cost);
+     }//prim mst finish 
+     
+void make_graph(){
+     get_data();
+     for(int i=0;i&ltv.size();i++){
+
+     cout&lt&lt"enter no. of edges connected to "&lt&lt(i)&lt&lt"th vertex,index and the edge cost";OP;
+             int temp1;cin>>temp1;
+             for(int j=0;j&lttemp1;j++){
+                      int temp2,temp3;cin>>temp2>>temp3;;
+                      make_link(i,temp2,temp3);
+                     }
+             }
+     }//make arbitrary graph
+
+void make_link(int i,int j,int k){
+     v[i]->child.push_back(make_pair(v[j],k));
+     }//make link finish
+
+node1* make_node(){
+     node1* temp=new node1;
+     temp->ds=INF;
+     temp->pd=null;
+     return temp;
+     }//make node1 finish
+
+node1* make_index(int i){
+       
+       node1* temp=make_node();
+       temp->index=i;
+       return temp;
+}//make index finsh
+
+void get_data(){
+     cout&lt&lt"enter "&lt&ltv.size()&lt&lt" vertices value";OP;
+     for(int i=0;i&ltv.size();i++){
+             v[i]=make_index(i);
+             }
+     }//get data finish
+
+};
+int main(){
+    cout&lt&lt"Enter No of vertices";OP;
+    fib_heap fh;
+    int n;cin>>n;
+    graph_alg ga(n,fh);
+    ga.make_graph();
+    pair&ltvector&ltnode1* >,int> temp=ga.prim_MST();
+    cout&lt&lt"path: ";
+    for(int i=0;i&lttemp.first.size();i++)cout&lt&lttemp.first[i]->index&lt&lt"->";
+    OP;cout&lt&lt" total cost is "&lt&lttemp.second;
+    OP;
+    OP;SP;
+    }
+/*
+9
+14
+2 1 4 7 8
+3 0 4 7 11 2 8
+4 1 8 8 2 5 4 3 7
+3 2 7 5 14 4 9
+2 3 9 5 10
+4 6 2 2 4 3 14 4 10
+3 7 1 8 6 5 2
+4 0 8 1 11 8 7 6 1
+3 2 2 6 6 7 7
+*/
+</p>
+            <br><br>
+<a href="prim.cpp" download><button type="button">Download</button></a>	               
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true" >
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <!-- Project Details Go Here -->
+                             
+                            <p class="item-intro text-muted">  <pre class='brush: cpp'>#include/&ltiostream&gt
+#include&ltvector&gt
+
+
+using namespace std;
+
+int merge_inversion(int p,int q,int r);
+
+int count_inversion(int p,int  r);
+vector&ltint&gt A;
+ 
+int main()
+{
+    int n;
+    cin>>n;A.push_back(0);
+    for(int i=1;i&lt=n;i++){int y;cin>>y;A.push_back(y);
+}
+    cout&lt&ltendl&lt&ltcount_inversion(1,n)&lt&ltendl&lt&ltendl;
+    cout&lt&ltendl&lt&lt"printing arrary"&lt&ltendl;
+    for(int i=1;i&lt=n;i++){cout&lt&ltA[i]&lt&lt"\t";}
+    cout&lt&ltendl;
+        system("pause");
+    return 0;
+    }
+    
+    
+ int count_inversion(int  p,int  r){
+     int inversion=0;
+     if(p<r){
+int             q=(p+r)/2;
+             inversion=inversion+count_inversion(p,q);
+             inversion=inversion+count_inversion(q+1,r);
+             inversion=inversion+merge_inversion(p,q,r);
+             
+             }
+     return inversion;
+     }   
+
+int merge_inversion(int p,int q,int r){
+    
+    int n1=q-p+1;int n2=r-q;
+
+vector&ltint&gt l1;
+vector&ltint&gt l2;
+l1.resize(n1+2);
+l2.resize(n2+2);
+
+    for(int i=1;i&lt=n1;i++){l1[i]=A[p+i-1];}
+    for(int i=1;i&lt=n2;i++){l2[i]=A[q+i];}
+    
+    l1[n1+1]=99999970;
+    l2[n2+1]=99999970;
+    
+    int i=1,j=1;
+    
+    int inversion=0;bool counts=false;
+    
+    for(int k=p;k&lt=r;k++){
+            
+            if(!counts && l2[j]<l1[i]){inversion = inversion+n1+1-i;counts=true;}
+            if(l1[i]&lt=l2[j]){A[k]=l1[i];i++;}
+            else{A[k]=l2[j];j++;counts=false;}
+            }
+    
+    return inversion;
+    
+    }</p>
+             <br><br>
+<a href="count.cpp" download><button type="button">Download</button></a>	              
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-hidden="true" >
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <!-- Project Details Go Here -->
+                             
+                            <p class="item-intro text-muted">  <pre class='brush: cpp'>#include/&ltiostream&gt
+#include&ltvector&gt
+
+
+using namespace std;
+
+int merge_inversion(int p,int q,int r);
+
+int count_inversion(int p,int  r);
+vector&ltint&gt A;
+ 
+int main()
+{
+    int n;
+    cin>>n;A.push_back(0);
+    for(int i=1;i&lt=n;i++){int y;cin>>y;A.push_back(y);
+}
+    cout&lt&ltendl&lt&ltcount_inversion(1,n)&lt&ltendl&lt&ltendl;
+    cout&lt&ltendl&lt&lt"printing arrary"&lt&ltendl;
+    for(int i=1;i&lt=n;i++){cout&lt&ltA[i]&lt&lt"\t";}
+    cout&lt&ltendl;
+        system("pause");
+    return 0;
+    }
+    
+    
+ int count_inversion(int  p,int  r){
+     int inversion=0;
+     if(p<r){
+int             q=(p+r)/2;
+             inversion=inversion+count_inversion(p,q);
+             inversion=inversion+count_inversion(q+1,r);
+             inversion=inversion+merge_inversion(p,q,r);
+             
+             }
+     return inversion;
+     }   
+
+int merge_inversion(int p,int q,int r){
+    
+    int n1=q-p+1;int n2=r-q;
+
+vector&ltint&gt l1;
+vector&ltint&gt l2;
+l1.resize(n1+2);
+l2.resize(n2+2);
+
+    for(int i=1;i&lt=n1;i++){l1[i]=A[p+i-1];}
+    for(int i=1;i&lt=n2;i++){l2[i]=A[q+i];}
+    
+    l1[n1+1]=99999970;
+    l2[n2+1]=99999970;
+    
+    int i=1,j=1;
+    
+    int inversion=0;bool counts=false;
+    
+    for(int k=p;k&lt=r;k++){
+            
+            if(!counts && l2[j]<l1[i]){inversion = inversion+n1+1-i;counts=true;}
+            if(l1[i]&lt=l2[j]){A[k]=l1[i];i++;}
+            else{A[k]=l2[j];j++;counts=false;}
+            }
+    
+    return inversion;
+    
+    }</p>
+            <br><br>
+<a href="count.cpp" download><button type="button">Download</button></a>	               
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true" >
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <!-- Project Details Go Here -->
+                             
+                            <p class="item-intro text-muted">  <pre class='brush: cpp'>#include/&ltiostream&gt
+#include&ltvector&gt
+
+
+using namespace std;
+
+int merge_inversion(int p,int q,int r);
+
+int count_inversion(int p,int  r);
+vector&ltint&gt A;
+ 
+int main()
+{
+    int n;
+    cin>>n;A.push_back(0);
+    for(int i=1;i&lt=n;i++){int y;cin>>y;A.push_back(y);
+}
+    cout&lt&ltendl&lt&ltcount_inversion(1,n)&lt&ltendl&lt&ltendl;
+    cout&lt&ltendl&lt&lt"printing arrary"&lt&ltendl;
+    for(int i=1;i&lt=n;i++){cout&lt&ltA[i]&lt&lt"\t";}
+    cout&lt&ltendl;
+        system("pause");
+    return 0;
+    }
+    
+    
+ int count_inversion(int  p,int  r){
+     int inversion=0;
+     if(p<r){
+int             q=(p+r)/2;
+             inversion=inversion+count_inversion(p,q);
+             inversion=inversion+count_inversion(q+1,r);
+             inversion=inversion+merge_inversion(p,q,r);
+             
+             }
+     return inversion;
+     }   
+
+int merge_inversion(int p,int q,int r){
+    
+    int n1=q-p+1;int n2=r-q;
+
+vector&ltint&gt l1;
+vector&ltint&gt l2;
+l1.resize(n1+2);
+l2.resize(n2+2);
+
+    for(int i=1;i&lt=n1;i++){l1[i]=A[p+i-1];}
+    for(int i=1;i&lt=n2;i++){l2[i]=A[q+i];}
+    
+    l1[n1+1]=99999970;
+    l2[n2+1]=99999970;
+    
+    int i=1,j=1;
+    
+    int inversion=0;bool counts=false;
+    
+    for(int k=p;k&lt=r;k++){
+            
+            if(!counts && l2[j]<l1[i]){inversion = inversion+n1+1-i;counts=true;}
+            if(l1[i]&lt=l2[j]){A[k]=l1[i];i++;}
+            else{A[k]=l2[j];j++;counts=false;}
+            }
+    
+    return inversion;
+    
+    }</p>
+             <br><br>
+<a href="count.cpp" download><button type="button">Download</button></a>	              
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- jQuery Version 1.11.0 -->
+    <script src="js/jquery-1.11.0.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="js/classie.js"></script>
+    <script src="js/cbpAnimatedHeader.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="js/jqBootstrapValidation.js"></script>
+    <script src="js/contact_me.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/agency.js"></script>
+
+</body>
+
+</html>

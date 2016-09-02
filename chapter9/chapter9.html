@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script> 
+	$(function(){ // I use jQuery in this example
+      
+           function () { close(){$(".flip").click(function(){
+    $(".panel").slideUp("slow");
+  });
+   });
+   });
+$(document).ready(function(){
+  $(".flip").click(function(){
+    $(".panel").slideToggle("slow");
+  });
+});
+</script>
+   
+
+    <title>Chapter-9</title>
+<link rel="stylesheet" href="css/style.css" type="text/css"/>
+<style>
+.list {list-style-type:none}
+.list > li {display:inline;
+			float:left;}
+</style>
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="css/agency.css" rel="stylesheet">
+
+
+   
+</head>
+
+<body id="page-top" class="index">
+
+    <!-- Navigation -->
+    
+<div class="header" style="background-image:url('head.jpg'); background-repeat:no-repeat; background-position:top;margin:0 auto;
+
+	overflow:hidden;">
+	<div class="wrap">
+		<div style="">
+		<center><h1><font size="100px"><a href="../index.html"><img src="intro.jpg"></a></font></h1><center>
+		</div>
+		<div class="cname" style="font-family: Arial black, Georgia, Serif">
+			
+         <center><h1><font type="Arial black">Chapter-9</h1></center>
+		</div>	
+		<div class="clear"><center><h2><font color="#346fa1">Medians And Order Statistics</font></h2></center></div>
+	</div>
+</div>
+   
+ <div class="container" style="background-image:url('tail.jpg');background-repeat:no-repeat;background-position:top;margin:0 auto;
+
+	overflow:hidden;margin-top:-50px">
+    <section id="content" >
+      <div class="inside">
+        <br><br><center><h2>All Questions</h2></center>
+        <div class="left" style="width:100%">
+        <ul class="list"><br><br>
+          <li style="margin-left:130px;width:23%"><img src="icon1.png">
+            <h4><a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
+                       Randomized median
+                         </a></h4>
+			
+
+			<a href="median.cpp" style="margin-top:-50px" download>Download</a>
+            <br/>
+			<br>
+			<br/>
+			<br>
+          </li>
+          <li style="width:23%"><img src="icon1.png">
+            <a href=""><h4><a href="#portfolioModal2" class="portfolio-link" data-toggle="modal">Sdfsdf</a></h4></a>
+            <a href="sdfsfd.cpp" download>Download</a>
+          <br/><br/>
+			<br>
+			<br>
+		  </li>
+          <li style="width:20%"><img src="icon1.png">
+            <a href=""><h4><a href="#portfolioModal3" class="portfolio-link" data-toggle="modal">Randomized select</a></h4></a>
+            <a href="randomized_select.cpp" download>Download</a>
+			<br/><br/>
+			<br>
+			<br>
+          </li>
+	
+        </ul>
+      </div>
+	  <div class="left" style="width:100%">
+        <ul class="list">
+          <li style="margin-left:130px;width:23%"><img src="icon1.png">
+            <a href=""><h4><a href="#portfolioModal4" class="portfolio-link" data-toggle="modal">QuantileK</a></h4></a>
+			<a href="quantiLeK" style="margin-top:-50px" download>Download</a>
+            <br/>
+			<br>
+			<br/>
+			<br>
+          </li>
+          
+	   </div>
+	  <br/>
+	  <br/>
+	  <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+	  	  <center><p class="lf">Copyright &copy;  <a href="http://www.httpcart.com/">httpcart.com</a> - All Rights Reserved</p>
+    <p class="rf">A product of <a href="http://www.httpcart.com/">httpcart.com</a></p></center>
+
+      </div>
+    </section>
+	
+</div>
+    
+                
+                  
+                    
+                
+           
+   
+    <!-- Portfolio Modals -->
+    <!-- Use the modals below to showcase details about your portfolio projects! -->
+
+    <!-- Portfolio Modal 1 -->
+	
+    <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true" >
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <!-- Project Details Go Here -->
+                             
+                            <p class="item-intro text-muted">  <pre class='brush: cpp'>#include&ltiostream&gt
+#include&ltcmath&gt
+#include&ltvector&gt
+#include&ltalgorithm&gt
+#include&ltcstdlib&gt
+
+
+using namespace std;
+
+void swap(int &a,int &b){int temp=a;a=b;b=temp;}
+vector&ltint&gt A;
+vector&ltint&gt Median;
+
+int Partition(int p,int r){
+    
+    int key=A[p];
+    
+    int i=p+1,j=r;
+    while(i&ltj){
+    //        cout&lt&lt" \ni "&lt&lti&lt&lt"  j "&lt&ltj&lt&lt"\n";
+               while(i&ltr && A[i]&ltkey)i++;
+               while(j>p && A[j]>key)j--;
+               if(i&ltj){swap(A[i],A[j]);}
+               
+               }
+     if(j&lt=r && j>=p){if(A[p]>=A[j]){swap(A[j],A[p]);return j;}}
+       return p;
+    }
+
+int Partition_Modified(int p,int r,int tem){
+    
+    int key=tem;
+    int i=p+1,j=r;
+    int mm=p+1;
+    while(i&lt=r){
+                if(A[i]==key){swap(A[p],A[i]);}
+                if(A[i]&ltkey){swap(A[mm],A[i]);mm++;}
+              i++;  }
+    if(mm-1>=p && mm-1&lt=r){
+    swap(A[mm-1],A[p]);
+  //  cout&lt&lt"mm "&lt&lt(mm-1)&lt&lt"\n";
+    return (mm-1);
+    }
+    return p;
+    }
+
+
+int Randomized_partition(int p,int r){
+    int i=p+(rand()%(r-p+1));
+    //cout&lt&lt"\ni "&lt&lti;;
+    swap(A[i],A[p]);
+    return Partition(p,r);
+    }
+
+
+int Randomize_Select(int p,int r,int m){
+    
+    if(p==r){return A[p];}
+    
+    int q;
+    q=Randomized_partition(p,r);
+    //cout&lt&lt"\nq "&lt&ltq&lt&lt"\n";
+    if(q==m){return A[q];}
+    else if(m&ltq){return Randomize_Select(p,q-1,m);}
+    else{return Randomize_Select(q+1,r,m);}
+}
+
+int Partition_Median(int p,int r){
+    
+    int key=Median[p];
+    int i=p+1,j=r;
+    while(i&ltj){
+               //cout&lt&lt"h";
+               while(i&ltr && Median[i]&ltkey)i++;
+               while(j>p && Median[j]>key)j--;
+               if(i&ltj){swap(Median[i],Median[j]);}
+               
+               }
+     if(j&lt=r && j>=p){//cout&lt&lt"j median "&lt&ltj&lt&ltendl;
+     if(Median[p]>=Median[j]){swap(Median[j],Median[p]);return j;}}
+       return p;
+    }
+
+
+int Randomized_partition_Median(int p,int r){
+    
+    int i=p+(rand()%(r-p+1));
+    swap(Median[i],Median[p]);
+    return Partition_Median(p,r);
+    
+    }
+
+
+int Randomize_Select_Median(int p,int r,int m){
+    
+    if(p==r){return Median[p];}
+    
+    int q;
+    q=Randomized_partition_Median(p,r);
+    if(q==m){return Median[q];}
+    else if(m&ltq){return Randomize_Select_Median(p,q-1,m);}
+    else{return Randomize_Select_Median(q+1,r,m);}
+
+}
+
+
+void Get_Median_Select(int m){
+     
+     int n=A.size();
+
+    for(int i=0;i&lt=ceil(n/5);i++){
+		int j;
+        for(j=5*i;j&lt5*i+5 && &ltcstdlib&gt;j++){
+                    for(int k=j-1;k>=5*i && A[k]>A[k+1];k--){
+						swap(A[k],A[k+1]);
+						}
+                    }
+                    int ty=A[5*i+((j-1-5*i)/2)];
+                    //cout&lt&lt"median : "&lt&ltty&lt&ltendl;
+            Median.push_back(ty);
+            
+            }
+     
+     int mp=(Median.size()-1)/2;
+     int tem=Randomize_Select_Median(0,Median.size()-1,mp);
+     //swap(A[0],A[mp]);
+     //cout&lt&lt"tem "&lt&lttem&lt&ltendl;
+     int y=Partition_Modified(0,A.size()-1,tem);
+     
+    // cout&lt&lt"y "&lt&lty&lt&ltendl;
+     if(y==m)   {cout&lt&lt"value positioned at : "&lt&ltA[y]&lt&ltendl;}
+     else if(m&lty) {cout&lt&ltRandomize_Select(0,y-1,m);}
+     else{cout&lt&ltRandomize_Select(y+1,A.size()-1,m);}
+     
+     }
+
+int main(){
+      
+int myint; while(myint!=42){
+    cin>>myint;A.push_back(myint);
+        }          
+    
+    Get_Median_Select(3);
+    
+//    int pq=Randomize_Select(0,A.size()-1,A.size()/2);    
+  //  cout&lt&lt"\nvalue selected : "&lt&ltpq;
+    cout&lt&ltendl;system("pause");
+    return 0;
+    }
+
+</p>
+	<br><br>
+<a href="median.cpp" download><button type="button">Download</button></a>	
+                           
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true" >
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <!-- Project Details Go Here -->
+                             
+                            <p class="item-intro text-muted">  <pre class='brush: cpp'>#include&ltiostream&gt
+#include&ltvector&gt
+
+using namespace std;
+vector&ltint&gtA;
+vector&ltbool&gttest;
+vector&ltbool&gttest1;
+int sum_max=0;
+int m,n;
+vector&ltbool&gt stamp;
+void color1(int i,int j,vector&ltbool&gttemp_vector,vector&ltbool&gt st,int summ){
+     
+       temp_vector[i][j]=false;summ+=A[i][j];st[i][j]=true;
+ //1.1
+  if(i+1&ltm && temp_vector[i+1][j]){
+       if(test1[i+1][j]){
+                         if(sum_max&lt(summ)){sum_max=summ;stamp=st;}
+                         }    
+    else{color1(i+1,j,temp_vector,st,summ);}
+    }
+   //1.2
+   if(i+1&ltm){if(!temp_vector[i+1][j]){ if(sum_max&lt(summ)){sum_max=summ;}}} 
+   if(i+1>=m){if(sum_max&lt(summ)){sum_max=summ;}} 
+    
+    //2
+     if(i-1>=0 && temp_vector[i-1][j]){
+              if(test1[i-1][j]){
+                         if(sum_max&lt(summ)){sum_max=summ;}
+                         }    
+    else{ color1(i-1,j,temp_vector,st,summ);}
+     }
+   //2.2
+   if(i-1>=0){if(!temp_vector[i-1][j]){ if(sum_max&lt(summ)){sum_max=summ;}}}
+      if(i-1&lt0){if(sum_max&lt(summ)){sum_max=summ;}} 
+     
+     //3
+     if(j+&ltcstdlib&gt && temp_vector[i][j+1]){
+        if(test1[i][j+1]){
+                         if(sum_max&lt(summ)){sum_max=summ;}
+                         }    
+    else{      color1(i,j+1,temp_vector,st,summ);}}
+      //3.2
+   if(j+&ltcstdlib&gt){if(!temp_vector[i][j+1]){ if(sum_max&lt(summ)){sum_max=summ;}}}
+      if(j+1>=n){if(sum_max&lt(summ)){sum_max=summ;}} 
+     
+     //4
+     if(j-1>=0 && temp_vector[i][j-1]){
+        if(test1[i][j-1]){
+                         if(sum_max&lt(summ)){sum_max=summ;}
+                         }    
+    else{       color1(i,j-1,temp_vector,st,summ);}}
+    //4.2
+   if(j-1>=0){if(!temp_vector[i][j-1]){ if(sum_max&lt(summ)){sum_max=summ;}}}
+      if(j+1&lt0){if(sum_max&lt(summ)){sum_max=summ;}} 
+     
+     }
+
+
+void color(int i,int j){
+   test[i][j]=false;
+  if(i+1&ltm && test[i+1][j]){
+    color(i+1,j);}
+     if(i-1>=0 && test[i-1][j]){
+               color(i-1,j);
+     }
+     if(j+&ltcstdlib&gt && test[i][j+1]){
+              color(i,j+1);}
+     if(j-1>=0 && test[i][j-1]){color(i,j-1);}
+    
+    }
+
+int main(){
+    int tc;cin>>tc;
+    for(int i=0;i&lttc;i++){
+            int mp,np;
+            cin>>mp;
+            cin>>np;m=mp;n=np;A.resize(m);test.resize(m);test1.resize(m);int sum=0;
+            vector&ltbool&gt ha1(m,1);
+            vector&ltbool&gt ha2(n,1);
+            for(int i=0;i&ltm;i++){A[i].resize(n);test[i].resize(n);test1[i].resize(n);
+                    for(int j=0;&ltcstdlib&gt;j++){
+                            cin>>A[i][j];sum+=A[i][j];
+                                                        test[i][j]=true;test1[i][j]=false;
+                                                        if(A[i][j]==0){test[i][j]=false;ha1[i]=false;ha2[j]=false;}
+                            }
+                    }cout&lt&ltendl;
+                   for(int i=0;i&ltm;i++){cout&lt&lt"  "&lt&ltha1[i];} cout&lt&ltendl;
+                   for(int i=0;&ltcstdlib&gt;i++){cout&lt&lt"  "&lt&ltha2[i];} cout&lt&ltendl;
+                  cout&lt&lt"sum "&lt&ltsum&lt&lt"\n";
+                    int temp_sum=0;
+                     for(int i=0;i&ltm;i++){
+                                    for(int j=0;&ltcstdlib&gt;j++){//if(A[i][j]&lt=8845){cout&lt&lt"\nk "&lt&ltA[i][j]&lt&lt"  "&lt&lt(8845-A[i][j]);}
+                                            if(test[i][j]){
+                                                           if((i-1)>=0 && test[i-1][j] && (i+1)&ltm && test[i+1][j] && (j-1)>=0 && test[i][j-1] && (j+1)&ltn && test[i][j+1] && test[i-1][j-1] && test[i-1][j+1]&& test[i+1][j-1] && test[i+1][j+1]){
+                                                                       temp_sum+=A[i][j];test1[i][j]=true;}
+                                                           
+                                                           }
+                                                         //  cout&lt&lttest1[i][j]&lt&lt"    ";
+                                            }//cout&lt&lt"\n";
+                                            }
+                    
+    //         /*
+                     for(int i=0;i&ltm;i++){
+                                    for(int j=0;&ltcstdlib&gt;j++){
+                                            
+                                            if(test1[i][j]){if(!((test1[i-1][j]||test1[i+1][j]) && (test1[i][j-1]||test1[i][j+1]))){
+                                                                                             temp_sum-=A[i][j];   test1[i][j]=false;}
+                                            }
+                                            
+                                                          //
+                                                       //    cout&lt&lttest1[i][j]&lt&lt"    ";
+                                            }//
+                                           // cout&lt&lt"\n";
+                                            }
+      //              */
+                    
+                   //cout&lt&lt"\n temp_sum is "&lt&lttemp_sum&lt&ltendl;
+                   vector&ltbool&gt st(m,vector&ltbool&gt(n,0));st=test1;
+                     for(int i=0;i&ltm;i++){
+                                    for(int j=0;&ltcstdlib&gt;j++){
+                                            if(test[i][j] && (!test1[i][j])){
+                                                           color1(i,j,test,st,0);
+                                                           
+                                                           }}}
+                     
+                //    cout&lt&lt"\nsum is "&lt&lt(sum_max+temp_sum)&lt&ltendl&lt&ltendl;
+                cout&lt&lt(sum_max+temp_sum)&lt&ltendl;
+          for(int i=0;i&ltm;i++){
+                                  for(int j=0;&ltcstdlib&gt;j++){cout&lt&ltstamp[i][j]&lt&lt"  ";}cout&lt&ltendl;}
+//            cout&lt&ltmax&lt&ltendl;
+            A.clear();
+            test.clear();
+            test1.clear();
+            sum_max=0;
+            }
+    
+    
+    cout&lt&ltendl;system("pause");
+    return 0;
+    }
+</p>
+          <br><br>
+ <a href="sdfsfd.cpp" download><button type="button">Download</button></a>						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true" >
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <!-- Project Details Go Here -->
+                             
+                            <p class="item-intro text-muted">  <pre class='brush: cpp'>#include&ltiostream&gt
+#include&ltvector&gt
+#include&ltalgorithm&gt
+#include&ltcstdlib&gt
+
+using namespace std;
+
+vector&ltint&gt A;
+int Partition(int p,int r){
+    
+    int key=A[p];
+   // cout&lt&lt"key "&lt&ltkey&lt&lt"\n";
+    int i=p+1,j=r;
+    while(i&ltj){
+               //cout&lt&lt"h";
+               while(i&ltr && A[i]&ltkey)i++;
+               while(j>p && A[j]>key)j--;
+               if(i&ltj){swap(A[i],A[j]);}
+               
+               }
+     if(j&lt=r && j>=p){
+           //  cout&lt&lt"j"&lt&ltj;
+             if(A[p]>=A[j]){
+                            swap(A[j],A[p]);return j;
+                            }}
+       return p;
+    }
+
+
+int Randomized_partition(int p,int r){
+    int i=p+(rand()%(r-p+1));
+    swap(A[i],A[p]);
+    int temp=Partition(p,r);//cout&lt&lt"\ntemp "&lt&lttemp&lt&ltendl;
+    return temp;
+    }
+
+
+int Randomize_Select(int p,int r,int m){
+
+    if(p==r){return A[p];}
+    
+    int q;
+    q=Randomized_partition(p,r);
+    //cout&lt&lt"q "&lt&ltq&lt&lt"\n";
+    if(q==m){return A[q];}
+    else if(m&ltq){return Randomize_Select(p,q-1,m);}
+    else{return Randomize_Select(q+1,r,m);}
+}
+
+
+int main(){
+      
+int myint;cin>>myint; int i=0;while(i&ltmyint){
+    int temp;cin>>temp;
+   A.push_back(temp);
+        }          
+      
+    //cout&lt&lt"size "&lt&ltA.size()&lt&ltendl;
+   int pq=Randomize_Select(0,A.size()-1,3);  
+    cout&lt&lt"\nvalue select : "&lt&ltpq;
+    cout&lt&ltendl;system("pause");
+    return 0;
+    }
+
+</p>
+            <br><br>
+<a href="randomized_select.cpp" download><button type="button">Download</button></a>	               
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true" >
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <!-- Project Details Go Here -->
+                             
+                            <p class="item-intro text-muted">  <pre class='brush: cpp'>#include&ltiostream&gt
+#include&ltvector&gt
+#include&ltalgorithm&gt
+#include&ltcstdlib&gt
+
+using namespace std;
+vector&ltint&gt A;
+vector&ltint&gt Quantile;
+int cl; 
+void swap(int &a,int &b){int temp=a;a=b;b=temp;}
+
+int Partition(int p,int r){
+//    swap()
+    int key=A[p];
+   // cout&lt&lt"key "&lt&ltkey&lt&lt"\n";
+    int i=p+1,j=r;
+    while(i&ltj){
+               //cout&lt&lt"h";
+               while(i&ltr && A[i]&ltkey)i++;
+               while(j>p && A[j]>key)j--;
+               if(i&ltj){swap(A[i],A[j]);}
+               
+               }
+     if(j&lt=r && j>=p){
+           //  cout&lt&lt"j"&lt&ltj;
+             if(A[p]>=A[j]){
+                            swap(A[j],A[p]);return j;
+                            }}
+       return p;
+    }
+
+
+int Randomized_partition(int p,int r){
+    int i=p+(rand()%(r-p+1));
+    swap(A[i],A[p]);
+    int temp=Partition(p,r);//cout&lt&lt"\ntemp "&lt&lttemp&lt&ltendl;
+    return temp;
+    }
+
+
+int Randomize_Select(int p,int r,int m){
+
+    if(p==r){return A[p];}
+    
+    int q;
+    q=Randomized_partition(p,r);
+    //cout&lt&lt"q "&lt&ltq&lt&lt"\n";
+    if(q==m){return A[q];}
+    else if(m&ltq){return Randomize_Select(p,q-1,m);}
+    else{return Randomize_Select(q+1,r,m);}
+}
+
+void Quantiles(int p,int r,int prev_k,int k){
+    if(k!=1 ){int n=A.size();
+             int i=(k)/2;
+             int x=Randomize_Select(p,r,(i+prev_k)*(n/cl));
+        Quantiles(p,(i+prev_k)*(n/cl)-1,0,i); 
+             Quantile.push_back(x);
+             cout&lt&lt"x "&lt&ltx&lt&lt"\n";
+       
+             
+            Quantiles((i+prev_k)*(n/cl)+1,r,i+prev_k,k-i); 
+             }
+     }
+
+int main(){
+      A.push_back(0);
+int myint; while(myint!=42){
+    cin>>myint;A.push_back(myint);
+    }          
+    cout&lt&lt"size "&lt&ltA.size()&lt&ltendl;
+    int k;
+    cin>>k;cl=k;
+           Quantile.push_back(0);
+      
+    //Quantile.resize(k);
+    Quantiles(1,A.size()-1,0,k);
+   //int pq=Randomize_Select(0,6,3);cout&lt&lt"start\n";    
+    for(int i=1;i&ltQuantile.size();i++)cout&lt&lt" "&lt&ltQuantile[i]&lt&lt"  ";   
+//    cout&lt&lt"\nvalue select : "&lt&ltpq;
+    cout&lt&ltendl;system("pause");
+    return 0;
+    }
+ 
+</p>
+             <br><br>
+<a href="quantiLeK.cpp" download><button type="button">Download</button></a>	              
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>       
+    <!-- jQuery Version 1.11.0 -->
+    <script src="js/jquery-1.11.0.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="js/classie.js"></script>
+    <script src="js/cbpAnimatedHeader.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="js/jqBootstrapValidation.js"></script>
+    <script src="js/contact_me.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/agency.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script> 
+	$(function(){ // I use jQuery in this example
+      
+           function () { close(){$(".flip").click(function(){
+    $(".panel").slideUp("slow");
+  });
+   });
+   });
+$(document).ready(function(){
+  $(".flip").click(function(){
+    $(".panel").slideToggle("slow");
+  });
+});
+</script>
+   
+
+    <title>Chapter-19</title>
+<link rel="stylesheet" href="css/style.css" type="text/css"/>
+<style>
+.list {list-style-type:none}
+.list > li {display:inline;
+			float:left;}
+</style>
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="css/agency.css" rel="stylesheet">
+
+
+   
+</head>
+
+<body id="page-top" class="index">
+
+    <!-- Navigation -->
+    
+<div class="header" style="background-image:url('head.jpg'); background-repeat:no-repeat; background-position:top;margin:0 auto;
+
+	overflow:hidden;">
+	<div class="wrap">
+		<div style="">
+		<center><h1><font size="100px"><a href="../index.html"><img src="intro.jpg"></a></font></h1><center>
+		</div>
+		<div class="cname" style="font-family: Arial black, Georgia, Serif">
+			
+         <center><h1><font type="Arial black">Chapter-19</h1></center>
+		</div>	
+		<div class="clear"><center><h2><font color="#346fa1">Fibonacci Heaps</font></h2></center></div>
+	</div>
+</div>
+   
+ <div class="container" style="background-image:url('tail.jpg');background-repeat:no-repeat;background-position:top;margin:0 auto;
+
+	overflow:hidden;margin-top:-50px">
+    <section id="content" >
+      <div class="inside">
+        <br><br><center><h2>All Questions</h2></center>
+        <div class="left" style="width:100%">
+        <ul class="list">
+		<br/><br/>
+          <li style="margin-left:130px;width:23%"><img src="icon1.png">
+            <h4><a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
+Binomial
+                         </a></h4>
+			
+
+			<a href="Binomial.cpp" style="margin-top:-50px"  download>Download</a>
+            <br/>
+			<br>
+			<br/>
+			<br>
+          </li>
+          
+         
+	
+        </ul>
+      </div>
+	  
+	   </div>
+	  <br/>
+	  <br/>
+	  <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+	  
+	  
+	  
+	   <center><p class="lf">Copyright &copy;  <a href="http://www.httpcart.com/">httpcart.com</a> - All Rights Reserved</p>
+	   <p class="rf">A product of <a href="http://www.httpcart.com/">httpcart.com</a></p></center>
+      </div>
+    </section>
+	
+</div>
+    
+                
+                  
+                    
+                
+           
+   
+
+
+    <!-- Portfolio Modals -->
+    <!-- Use the modals below to showcase details about your portfolio projects! -->
+
+    <!-- Portfolio Modal 1 -->
+	
+    <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true" >
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <!-- Project Details Go Here -->
+                             
+                            <p class="item-intro text-muted">  <pre class='brush: cpp'>#include&ltiostream&gt
+#include&ltcmath&gt
+#include&ltlist&gt
+#include&ltstack&gt
+#include&ltbitset&gt
+#include&ltvector&gt
+#include&ltstring&gt
+#include&ltalgorithm&gt
+#include &ltmap&gt
+
+#define null NULL
+#define fi(sz) for(int i=0;i&ltsz;i++)
+#define fj(sz) for(int j=0;j&ltsz;j++) 
+#define pb push_back
+#define all(v) (v).begin(),(v).end()
+#define SP system("pause")
+#define OP cout&lt&ltendl
+using namespace std;
+
+struct node{
+
+int data;
+int deg;
+list&ltnode* > child;
+node* sib;
+node* prev;
+node* parent;
+};
+
+bool myfunc(node* a,node* b){return a->deg<b->deg;}
+
+class binomial_heap{
+      node* head;
+      
+      public:
+             
+             
+             
+             binomial_heap(){head=null;}
+             
+             void binomial_link(node* x,node* y){x->parent=y;
+             if(y->child.empty()){x->sib=null;}
+             else{
+             x->sib=y->child.front();
+             y->child.front()->prev=x;
+             }
+             x->prev=null;
+             y->child.push_front(x);
+             y->deg+=1;
+             }//link finish
+             
+             void binomial_union(node* h1,node* h2){
+                  vector&ltnode *>temp;
+                  node *t=h1;
+                  
+                  while(t!=null){
+                                 temp.pb(t);
+                                 t=t->sib;
+                                 }
+                                t=h2; 
+                  while(t!=null){
+                                 temp.pb(t);
+                                 t=t->sib;
+                                 }
+                  sort(all(temp),myfunc);               
+                 
+                 
+                 
+                 for(int i=0;i&lttemp.size();i++){
+                         if(i==0){
+                                  temp[i]->prev=null;
+                                }
+                               else  temp[i]->prev=temp[i-1];
+                                
+                                  if(i+1<temp.size())
+                                  temp[i]->sib=temp[i+1];
+                                  else
+                                  temp[i]->sib=null;
+                                     }
+                   if(temp.empty())return ;                  
+                 head= temp[0];temp.clear();
+                                 node *x=head;
+                           node *next=x->sib;      
+                              node* prevx=null;
+                              while(next!=null){
+                                                if((x->deg!=next->deg) || (next->sib!=null && x->deg==next->sib->deg)){
+                                                                       prevx=x;
+                                                                       x=next;
+                                                                       }//if case 1 close
+                                                else{
+                                                     if(x->data&lt=next->data){
+                                                                          x->sib=next->sib;
+                                                                          binomial_link(next,x);
+                                                                          }
+                                                     else{
+                                                          if(prevx==null){head=next;}
+                                                          else{prevx->sib=next;}
+                                                          binomial_link(x,next);
+                                                          x=next;
+                                                          }
+                                                     }
+                                                next=x->sib;
+                                                }//while finish   
+                          }//union finish
+      
+      node* gethead(){return head;}
+      
+      node* binomial_minimum(){
+            int min=999999;
+            node* x=head;node* y=null;
+            while(x!=null){if(x->data&ltmin){min=x->data;y=x;}x=x->sib;}
+            return y;
+            }//binomial minimum
+      
+      node* binomial_insert(int dat){
+            node* temp=new node;
+            temp->data=dat;
+            temp->deg=0;
+            temp->prev=null;
+            temp->sib=null;
+            temp->parent=null;
+            binomial_union(head,temp);
+            }//binomial insert finish
+      
+      void binomial_extract_min(){
+        node* x=binomial_minimum();
+        node* prevx=x->prev;
+        node* next=x->sib;
+        if(x!=head)
+        prevx->sib=next;
+        else head=x->sib;
+   
+   //cout&lt&lt"head  "&lt&lthead->sib->data;OP;
+        next->prev=prevx;
+        node* head2;
+        node* temp1=x->child.back();
+        if(x->child.empty()){temp1=null;}
+        head2=temp1;
+        while(!x->child.empty()){
+                    temp1->parent=null;             
+                   x->child.pop_back();
+                   if(!x->child.empty()){
+                   node* temp2=x->child.back();
+                   temp1->sib=temp2;
+                   if(temp2!=null){temp2->prev=temp1;           
+                              temp1=temp2;}
+                             } }
+           if(temp1!=null){temp1->sib=null;temp1->parent=null;}
+           
+           binomial_union(head,head2);
+           
+           }
+      
+      void swap(node* a,node* b){int temp=a->data;a->data=b->data;b->data=temp;}
+      
+      void binomial_decrease_key(node* x,int data){
+           
+           if(data>x->data){cout&lt&lt"wrong entry";OP;return ;}
+           x->data=data;
+           node* z=x->parent;node* y=x;
+           while(z!=null && z->data>y->data){
+                         
+                         swap(y,z);
+                         y=z;
+                         z=y->parent;
+                         }
+           }//decrease key finish
+      
+      void binomial_delete(node* x){
+           
+           binomial_decrease_key(x,binomial_minimum()->data-1);
+              binomial_extract_min();
+           node* p=gethead();OP;OP;
+    while(p!=null){cout&lt&ltp->data;OP;p=p->sib;}
+        
+           }//delete finish
+      
+      
+      };
+
+int main(){
+    int data;binomial_heap bh;
+    do{cin>>data;bh.binomial_insert(data);}while(data!=18);
+    binomial_heap bh1;
+    do{cin>>data;bh1.binomial_insert(data);}while(data!=12);
+    bh.binomial_union(bh.gethead(),bh1.gethead());
+    
+    node* p=bh.gethead();OP;OP;
+    while(p!=null){cout&lt&ltp->data&lt&lt"   "&lt&ltp->child.front()->data;OP;p=p->sib;}
+       
+    OP;    OP;
+    bh.binomial_delete(bh.gethead());
+      p=bh.gethead();OP;OP;
+    while(p!=null){cout&lt&ltp->data;OP;p=p->sib;}
+    
+    OP;OP;
+    
+    
+//  
+    OP;SP;
+    }
+</p>
+             <br><br>
+<a href="Binomial.cpp" download><button type="button">Download</button></a>	              
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  
+            
+    <!-- jQuery Version 1.11.0 -->
+    <script src="js/jquery-1.11.0.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="js/classie.js"></script>
+    <script src="js/cbpAnimatedHeader.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="js/jqBootstrapValidation.js"></script>
+    <script src="js/contact_me.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/agency.js"></script>
+
+</body>
+
+</html>

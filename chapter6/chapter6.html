@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script> 
+	$(function(){ // I use jQuery in this example
+      
+           function () { close(){$(".flip").click(function(){
+    $(".panel").slideUp("slow");
+  });
+   });
+   });
+$(document).ready(function(){
+  $(".flip").click(function(){
+    $(".panel").slideToggle("slow");
+  });
+});
+</script>
+   
+
+    <title>Chapter-6</title>
+<link rel="stylesheet" href="css/style.css" type="text/css"/>
+<style>
+.list {list-style-type:none}
+.list > li {display:inline;
+			float:left;}
+</style>
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="css/agency.css" rel="stylesheet">
+
+
+   
+</head>
+
+<body id="page-top" class="index">
+
+    <!-- Navigation -->
+    
+<div class="header" style="background-image:url('head.jpg'); background-repeat:no-repeat; background-position:top;margin:0 auto;
+
+	overflow:hidden;">
+	<div class="wrap">
+		<div style="">
+		<center><h1><font size="100px"><a href="../index.html"><img src="intro.jpg"></a></font></h1><center>
+		</div>
+		<div class="cname" style="font-family: Arial black, Georgia, Serif">
+			
+         <center><h1><font type="Arial black">Chapter-6</h1></center>
+		</div>	
+		<div class="clear"><center><h2><font color="#346fa1">Heap Sort</font></h2></center></div>
+	</div>
+</div>
+   
+ <div class="container" style="background-image:url('tail.jpg');background-repeat:no-repeat;background-position:top;margin:0 auto;
+
+	overflow:hidden;margin-top:-50px">
+    <section id="content" >
+      <div class="inside">
+        <br><br><center><h2>All Questions</h2></center>
+        <div class="left" style="width:100%">
+        <ul class="list">
+		<br><br>
+          <li style="margin-left:130px;width:23%"><img src="icon1.png">
+            <h4><a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
+                       Random in place
+                         </a></h4>
+			
+
+			<a href="random.cpp" style="margin-top:-50px" download>Download</a>
+            <br/>
+			<br>
+			<br/>
+			<br>
+          </li>
+          <li style="width:23%"><img src="icon1.png">
+            <a href=""><h4><a href="#portfolioModal2" class="portfolio-link" data-toggle="modal">Young Tableau</a></h4></a>
+            <a href="young.cpp" download>Download</a>
+          <br/><br/>
+			<br>
+			<br>
+		  </li>
+          <li style="width:20%"><img src="icon1.png">
+            <a href=""><h4><a href="#portfolioModal3" class="portfolio-link" data-toggle="modal">Heap </a></h4></a>
+            <a href="heap.cpp" download>Download</a>
+			<br/><br/>
+			<br>
+			<br>
+          </li>
+	
+        </ul>
+      </div>
+	 
+	   </div>
+	  <br/>
+	  <br/>
+	  <br/>
+	  <br/>
+	  <br/>
+	  <br/>
+	  <br/>
+	  <br/>
+	  <br/>
+	  <br/>
+	  <br/>
+	  <br/>
+	  
+	  
+	  <center><p class="lf">Copyright &copy;  <a href="http://www.httpcart.com/">httpcart.com</a> - All Rights Reserved</p>
+    <p class="rf">A product of <a href="http://www.httpcart.com/">httpcart.com</a></p></center>
+      </div>
+    </section>
+	
+</div>
+    
+                
+                  
+                    
+                
+  
+
+
+    <!-- Portfolio Modals -->
+    <!-- Use the modals below to showcase details about your portfolio projects! -->
+
+    <!-- Portfolio Modal 1 -->
+	
+    <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true" >
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <!-- Project Details Go Here -->
+                             
+                            <p class="item-intro text-muted">  <pre class='brush: cpp'>#include&ltiostream&gt
+#include&ltvector&gt
+#include&ltcstdlib&gt
+#define swap(x,y) x=x+y;y=x-y;x=x-y;
+
+using namespace std;
+vector&ltint&gt Randomizeinplace(vector&ltint&gt a);
+
+int main()
+{
+vector&ltint&gt data;
+int n;
+cout&lt&lt"enter number of values: ";
+cin>>n;
+cout&lt&ltendl;
+
+data.resize(n);
+for(int i=0;i&ltn;i++){cin>>data[i];}
+
+data=Randomizeinplace(data);
+for(int i=0;&ltcstdlib&gt;i++){cout&lt&ltdata[i]&lt&lt"  ";
+}
+cout&lt&ltendl;
+
+return 0;
+}
+
+
+vector&ltint&gt Randomizeinplace(vector&ltint&gt a){
+
+for(int i=a.size(),j=0;i>1;i--){
+int p=j+(rand()%(i));
+cout&lt&lt"p:"&lt&ltp&lt&ltendl;
+if(p!=j){
+swap(a[j],a[p]);}j++;
+}
+
+return a;
+}
+</p>
+            <br><br>
+<a href="random.cpp" download><button type="button">Download</button></a>			
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true" >
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <!-- Project Details Go Here -->
+                             
+                            <p class="item-intro text-muted">  <pre class='brush: cpp'>#include&ltiostream&gt
+#include&ltvector&gt
+#include&ltcstdlib&gt
+#include&ltcmath&gt
+#define swap(x,y) x=x+y;y=x-y;x=x-y;
+#define INFINIT 2&lt&lt14
+using namespace std;
+
+
+class Young_Tableau{
+	
+vector&ltint&gt data;
+int m,n;
+
+public:
+
+Young_Tableau(int mn,int nm){
+                  m=mn;n=nm;
+                  data.resize(m);
+for(int i=0;i&ltm;i++){
+	data[i].resize(n); 
+	for(int j=0;&ltcstdlib&gt;j++){
+		data[i][j]=INFINIT;
+		}
+	}
+}//young_tableau finsih
+
+
+void Youngify(int i,int j){
+   //  cout&lt&lt"i: "&lt&lti&lt&ltendl;
+    
+     int smallesti=i;
+     int smallestj=j;
+     
+        if(i+1&ltm && data[smallesti][smallestj]>data[i+1][j]){
+                             smallesti=i+1;
+     }
+        if(j+&ltcstdlib&gt && data[smallesti][smallestj]>data[i][j+1]){  
+			smallesti=i;
+			smallestj=j+1;
+			} 
+        if(!(smallesti==i && smallestj==j)){
+			swap(data[i][j],data[smallesti][smallestj]);
+            Youngify(smallesti,smallestj);
+			}
+ y}
+
+void Youngify_Up(int i,int j){
+   //  cout&lt&lt"i: "&lt&lti&lt&ltendl;
+    
+     int smallesti=i;
+     int smallestj=j;
+     
+        if(i-1>=0 && data[smallesti][smallestj]&ltsdata[i-1][j]){
+                             smallesti=i-1;
+     }
+        if(j-1>=0 && data[smallesti][smallestj]&ltdata[i][j-1]){  smallesti=i;smallestj=j-1;} 
+        if(!(smallesti==i && smallestj==j)){swap(data[i][j],data[smallesti][smallestj]);
+                      
+                      Youngify_Up(smallesti,smallestj);}
+          }
+
+
+
+             
+             
+vector&ltint&gt Young_Tableau_sort(){
+           
+            while((Extract_min_element())!=INFINIT);
+           return data;         
+            }     
+            
+vector&ltint&gt Extract_Young_Tableau(vector&ltint&gt p){
+            for(int i=0;i&ltp.size();i++){
+                    Young_Tableau_insert(p[i]);
+                    }
+            return data;
+            }
+            
+int Extract_min_element(){
+    int val=data[0][0];
+    data[0][0]=INFINIT;
+    Youngify(0,0);
+    return val;
+    }
+ 
+vector&ltint&gt  Current_Young_Tableau(){return data;}
+ 
+ void Young_Tableau_increase_key(int i,int j,int new_value){
+      if(data[i][j]>new_value)return ;
+      data[i][j]=new_value;
+      Youngify(i,j);
+      }
+      
+ void Young_Tableau_insert(int value){
+      data[m-1][n-1]=value;
+      Youngify_Up(m-1,n-1);
+      }    
+          
+     void Young_Tableau_decrease_key(int i,int j,int new_value){
+      if(data[i][j]&ltnew_value)return ;
+      data[i][j]=new_value;
+      Youngify_Up(i,j);
+      }
+};
+
+int main()
+{
+    vector&ltint&gt data;
+
+int n,m,p;
+cout&lt&lt"enter m and n: ";
+cin>>m>>n;
+cout&lt&ltendl&lt&lt"enter number of values to  insert: ";
+cin>>p;
+//cout&lt&ltn;
+vector&ltint&gt dat;dat.resize(p);
+for(int i=0;i&ltp;i++){
+        cin>>dat[i];
+        }
+
+//cout&lt&lt"initial"&lt&ltdata.size()&lt&lt"\n";
+Young_Tableau yt(m,n);
+
+data=yt.Extract_Young_Tableau(dat);
+
+for(int i=0;i&ltm;i++){
+	cout&lt&ltendl;
+	for(int j=0;&ltcstdlib&gt;j++){
+		cout&lt&ltdata[i][j]&lt&lt"  ";
+		}
+	}
+
+
+cout&lt&ltendl;
+system("pause");
+return 0;
+}
+</p>
+            <br><br>
+<a href="young.cpp" download><button type="button">Download</button></a>			
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true" >
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <!-- Project Details Go Here -->
+                             
+                            <p class="item-intro text-muted">  <pre class='brush: cpp'>#include&ltiostream&gt
+#include&ltvector&gt
+#include&ltcstdlib&gt
+#include&ltcmath&gt
+#define swap(x,y) x=x+y;y=x-y;x=x-y;
+
+using namespace std;
+
+
+class heap_ds{
+vector&ltint&gt data;
+public:
+heap_ds(vector&ltint&gt a){data=a;}
+
+int Parent(int i){return (int)floor(i/2);}
+
+int Left(int i){return (2*i);}
+
+int Right(int i){return (2*i+1);}
+
+void Max_heapify(int i,int sizes){
+   //  cout&lt&lt"i: "&lt&lti&lt&ltendl;
+     int l=Left(i);
+     int r=Right(i);
+     int largest=i;
+        if(l&lt=sizes&& data[largest]&ltdata[l]){largest=l;}
+        if(r&lt=sizes && data[largest]&ltdata[r]){largest=r;} 
+        if(largest!=i){
+			swap(data[i],data[largest]);
+     		Max_heapify(largest,sizes);
+			}
+     
+     }
+
+void Build_max_heap(){
+          int p=data.size();
+          p=(p-1)/2;
+  //        cout&lt&ltendl&lt&ltp&lt&lt"  "&lt&ltdata[1]&lt&lt"  "&lt&ltdata.size();
+     for(int i=p;i>=1;i--){
+            //cout&lt&lti&lt&lt"  "&lt&lt(data.size()-1);
+             Max_heapify(i,data.size()-1);
+             
+             }}
+             
+             
+vector&ltint&gt Heapsort(){
+            Build_max_heap();
+            for(int i=data.size()-1;i>1;i--){
+                    swap(data[1],data[i]);
+                    Max_heapify(1,i-1);
+                    //cout&lt&lt"data1 "&lt&ltdata[1]&lt&lt"  datai "&lt&ltdata[i];
+                    }
+           return data;         
+            }     
+            
+vector&ltint&gt Extract_max_heap(){
+            Build_max_heap();
+            return data;
+            }
+            
+int Extract_max_element(){
+    int val=data[1];
+    swap(data[1],data[data.size()-1]);
+    data.erase(data.begin()+(data.size()-1));
+    return val;
+    }
+ 
+ vector&ltint&gt Current_heap(){return data;}
+ 
+ void Heap_increase_key(int i,int new_value){
+      if(data[i]>new_value)return ;
+      data[i]=new_value;
+      while(i>1 && data[Parent(i)]&ltnew_value){swap(data[Parent(i)],data[i]);i=Parent(i);}
+      }
+      
+ void Heap_insert(int value){
+      data.resize(data.size()+1);
+      data[(data.size()-1)]=value;
+      Heap_increase_key((data.size()-1),value);
+      }    
+          
+     void Heap_decrease_key(int i,int new_value){
+      if(data[i]&ltnew_value)return ;
+      data[i]=new_value;
+      bool thr=false;
+      while(i&ltdata.size() && Left(i)&ltdata.size() && data[Left(i)]>new_value){thr=true;swap(data[Left(i)],data[i]);i=Left(i);}
+      while(!thr && i&ltdata.size() && Right(i)&ltdata.size() && data[Right(i)]>new_value){swap(data[Right(i)],data[i]);i=Right(i);}
+      }
+};
+
+int main()
+{
+vector&ltint&gt data;
+int n;
+cout&lt&lt"enter number of values: ";
+cin>>n;
+//cout&lt&ltn;
+
+data.resize(n+1);
+data[0]=-1;
+for(int i=1;i&lt=n;i++){cin>>data[i];}
+//cout&lt&lt"initial"&lt&ltdata.size()&lt&lt"\n";
+heap_ds hp(data);
+
+data=hp.Extract_max_heap();
+hp.Heap_insert(7);
+data=hp.Current_heap();
+//cout&lt&lthp.Extract_max_element();
+//data=hp.Heapsort();
+
+for(int i=1;i&ltdata.size();i++){cout&lt&ltendl&lt&lt"data:"&lt&ltdata[i];}
+
+cout&lt&ltendl;
+system("pause");
+return 0;
+}
+</p>
+	<br><br>
+	<a href="heap.cpp" download><button type="button">Download</button></a>
+                           
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+            
+    <!-- jQuery Version 1.11.0 -->
+    <script src="js/jquery-1.11.0.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="js/classie.js"></script>
+    <script src="js/cbpAnimatedHeader.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="js/jqBootstrapValidation.js"></script>
+    <script src="js/contact_me.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/agency.js"></script>
+
+</body>
+
+</html>

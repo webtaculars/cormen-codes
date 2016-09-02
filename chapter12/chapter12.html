@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script> 
+	$(function(){ // I use jQuery in this example
+      
+           function () { close(){$(".flip").click(function(){
+    $(".panel").slideUp("slow");
+  });
+   });
+   });
+$(document).ready(function(){
+  $(".flip").click(function(){
+    $(".panel").slideToggle("slow");
+  });
+});
+</script>
+   
+
+    <title>Chapter-12</title>
+<link rel="stylesheet" href="css/style.css" type="text/css"/>
+<style>
+.list {list-style-type:none}
+.list > li {display:inline;
+			float:left;}
+</style>
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="css/agency.css" rel="stylesheet">
+
+
+   
+</head>
+
+<body id="page-top" class="index">
+
+    <!-- Navigation -->
+    
+<div class="header" style="background-image:url('head.jpg'); background-repeat:no-repeat; background-position:top;margin:0 auto;
+
+	overflow:hidden;">
+	<div class="wrap">
+		<div style="">
+		<center><h1><font size="100px"><a href="../index.html"><img src="intro.jpg"></a></font></h1><center>
+		</div>
+		<div class="cname" style="font-family: Arial black, Georgia, Serif">
+			
+         <center><h1><font type="Arial black">Chapter-12</h1></center>
+		</div>	
+		<div class="clear"><center><h2><font color="#346fa1">Binary Search Trees</font></h2></center></div>
+	</div>
+</div>
+   
+ <div class="container" style="background-image:url('tail.jpg');background-repeat:no-repeat;background-position:top;margin:0 auto;
+
+	overflow:hidden;margin-top:-50px">
+    <section id="content" >
+      <div class="inside">
+        <br><br><center><h2>All Questions</h2></center>
+        <div class="left" style="width:100%">
+        <ul class="list">
+		<br/><br/>
+          <li style="margin-left:130px;width:23%"><img src="icon1.png">
+            <h4><a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
+                      Radix Trees
+                         </a></h4>
+			
+
+			<a href="radixtrees.cpp" style="margin-top:-50px" download>Download</a>
+            <br/>
+			<br>
+			<br/>
+			<br>
+          </li>
+          <li style="width:23%"><img src="icon1.png">
+            <a href=""><h4><a href="#portfolioModal2" class="portfolio-link" data-toggle="modal">Binary Tree</a></h4></a>
+            <a href="binary.cpp" download>Download</a>
+          <br/><br/>
+			<br>
+			<br>
+		  </li>
+         
+	
+        </ul>
+      </div>
+	  
+	   </div>
+	  <br/>
+	  <br/>
+	  <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+	  
+	  
+	   <center><p class="lf">Copyright &copy;  <a href="http://www.httpcart.com/">httpcart.com</a> - All Rights Reserved</p>
+	   <p class="rf">A product of <a href="http://www.httpcart.com/">httpcart.com</a></p></center>
+      </div>
+    </section>
+	
+</div>
+    
+                
+                  
+                    
+                
+           
+   
+
+
+    <!-- Portfolio Modals -->
+    <!-- Use the modals below to showcase details about your portfolio projects! -->
+
+    <!-- Portfolio Modal 1 -->
+	
+    <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true" >
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <!-- Project Details Go Here -->
+                             
+                            <p class="item-intro text-muted">  <pre class='brush: cpp'>#include&ltiostream&gt
+#include&ltvector&gt
+#include&ltstring&gt
+#include&ltalgorithm&gt
+#define null NULL
+using namespace std;
+
+struct node{
+       
+       string data;
+       node *left;
+       node *right;
+                    
+       };
+       
+class Radix_Tree{
+    node *root;
+      public:
+    
+      Radix_Tree(){root=new node;root->data="";root->left=null;root->right=null;}
+             
+      void Radix_Tree_Insert(string str){
+           node* p=root;int i=0;
+           for(i=0;i&ltstr.length();i++){
+                   if(str[i]=='1'){if(p->right==null){node *temp=new node;temp->data="";temp->left=null;temp->right=null;p->right=temp;}
+                   if(i==str.length()-1){p->data=str;}
+                   p=p->right;}
+                   else{if(p->left==null){node *temp=new node;temp->data="";temp->left=null;temp->right=null;p->left=temp;}
+                   if(i==str.length()-1){p->data=str;}
+                   p=p->left;}
+                   }
+                   //cout&lt&lt"\tst"&lt&ltstr[i]&lt&lt"\n";
+              
+           }//radix_Insert close
+      
+     
+      node* get_root(){return root;} //get root finish
+      
+                
+      void Preorder_walk(node *p){
+           if(p!=null){ 
+                     if(p->data!="")
+                       cout&lt&lt" "&lt&ltp->data&lt&lt" ";
+
+                       Preorder_walk(p->left);
+                     
+                       Preorder_walk(p->right);
+                       }
+           }//preorder walk finish
+     
+    
+      };
+
+
+int main(){
+    
+    string myint;Radix_Tree rt;
+    do{
+        cin>>myint;
+        rt.Radix_Tree_Insert(myint);
+        }
+        while(myint!="0000");
+    cout&lt&lt"\nkk\n";
+    rt.Preorder_walk(rt.get_root());
+      cout&lt&ltendl;system("pause");
+    return 0;
+    }
+</p>
+             <br><br>
+<a href="radixtrees.cpp" download><button type="button">Download</button></a>	              
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true" >
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <!-- Project Details Go Here -->
+                             
+                            <p class="item-intro text-muted">  <pre class='brush: cpp'>#include&ltiostream&gt
+#include&ltvector&gt
+#include&ltalgorithm&gt
+#define null NULL
+using namespace std;
+
+struct node{
+       
+       int data;
+       node *left;
+       node *right;
+       node *parent;
+             
+       };
+       
+class BST{
+    node *root,*nil;
+      public:
+    
+      BST(){nil=new node;nil->data=null;nil->left=null;nil->right=null;nil->parent=null;root=nil;}
+             
+      void BST_Insert(int a){
+           
+           if(root==nil){
+                          node *temp=new node;
+                          temp->data=a;
+                          temp->left=nil;
+                          temp->right=nil;
+                          temp->parent=nil;
+                          root=temp;
+                          //cout&lt&ltroot->data&lt&ltendl;
+                          }
+           else{
+              Recurse_insert(root,a);
+                               
+                }
+           
+           }//BST_Insert close
+      
+      void Recurse_insert(node *x,int key){
+           
+           if(x->data>key){
+		   	if(x->left!=nil){
+				Recurse_insert(x->left,key);
+				}
+			else{
+				node *temp=new node;
+                temp->data=key;
+                temp->left=nil;
+                temp->right=nil;
+                temp->parent=x;
+                x->left=temp;
+                }
+			}
+           else{
+		   	if(x->right!=nil){
+				Recurse_insert(x->right,key);
+				}
+			else{
+				node *temp=new node;
+                temp->data=key;
+                temp->left=nil;
+                temp->right=nil;
+                temp->parent=x;
+                x->right=temp;
+                          }
+			}
+           
+           }//recurse insert finish
+      
+      node* get_root(){return root;} //get root finish
+      
+                
+      void Inorder_walk(node *p){
+           if(p!=nil){ 
+                       Inorder_walk(p->left);
+                       cout&lt&lt" "&lt&ltp->data&lt&lt" ";
+                       Inorder_walk(p->right);
+                       }
+           }//inorder walk finish
+     
+     node* BST_Minimum(node *p){if(p->left!=nil){return BST_Minimum(p->left);}else{ return p;}}//BST minimun clccose
+    
+     node* BST_Maximum(node *p){if(p->right!=nil)return BST_Maximum(p->right);else return p;}//BST max clccose
+    
+     node* BST_Succesor(node* p){
+           
+           if(p->right!=nil){return BST_Minimum(p->right);}
+           node *y=p;
+           while(y!=nil && y==(y->parent)->right){ y=y->parent;  }
+           return (y==nil?nil:y->parent);
+           }//bst succesor cllose
+      
+      
+      node* BST_Predecessor(node *p){
+            if(p->left!=nil){return BST_Maximum(p->left);}
+            
+            while(p!=nil && p==(p->parent)->left){p=p->parent;}
+            return (p==nil?nil:p->parent);
+            }//bst predecessor close
+       
+      node* BST_Search(node *p,int key){
+            
+            if(p==nil||p->data==key){return p;}
+            if(p->data>key){return BST_Search(p->left,key);}
+            else{return BST_Search(p->right,key);}
+            
+            }//bst search close
+      
+      void BST_Delete(node* p){
+            
+            node *y=nil;
+            if(p->left==nil || p->right==nil){y=p;}
+            else{y=BST_Succesor(p);}
+            node* x=nil;
+            if(y->left!=nil){ x=y->left; }
+            else{x=y->right;}
+            
+                     x->parent=y->parent;
+             
+            if(y->parent==nil){
+                                root=x;
+                                }
+            else{
+                if(y==(y->parent)->left){(y->parent)->left=x;} 
+                 else{(y->parent)->right=x;}
+                 }
+              
+            if(y!=p){p->data=y->data;}  
+          
+            }//bst delete finish
+      
+      };
+
+
+int main(){
+    
+    int myint;BST bs;
+    do{
+        cin>>myint;
+        bs.BST_Insert(myint);
+        }
+        while(myint!=42);
+    
+    bs.Inorder_walk(bs.get_root());
+     
+      cout&lt&ltendl&lt&lt((bs.BST_Maximum(bs.get_root()))->data);
+    cout&lt&ltendl&lt&lt(bs.BST_Succesor(bs.get_root()))->data;
+    cout&lt&ltendl&lt&lt(bs.BST_Predecessor(bs.get_root()))->data;
+    bs.BST_Delete(bs.get_root());
+    cout&lt&ltendl&lt&lt"\n";
+    bs.Inorder_walk(bs.get_root());
+    
+    cout&lt&ltendl;system("pause");
+    return 0;
+    }
+</p>
+             <br><br>
+<a href="binary.cpp" download><button type="button">Download</button></a>	              
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+            
+    <!-- jQuery Version 1.11.0 -->
+    <script src="js/jquery-1.11.0.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="js/classie.js"></script>
+    <script src="js/cbpAnimatedHeader.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="js/jqBootstrapValidation.js"></script>
+    <script src="js/contact_me.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/agency.js"></script>
+
+</body>
+
+</html>

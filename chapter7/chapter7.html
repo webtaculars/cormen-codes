@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script> 
+	$(function(){ // I use jQuery in this example
+      
+           function () { close(){$(".flip").click(function(){
+    $(".panel").slideUp("slow");
+  });
+   });
+   });
+$(document).ready(function(){
+  $(".flip").click(function(){
+    $(".panel").slideToggle("slow");
+  });
+});
+</script>
+   
+
+    <title>Chapter-7</title>
+<link rel="stylesheet" href="css/style.css" type="text/css"/>
+<style>
+.list {list-style-type:none}
+.list > li {display:inline;
+			float:left;}
+</style>
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="css/agency.css" rel="stylesheet">
+
+
+   
+</head>
+
+<body id="page-top" class="index">
+
+    <!-- Navigation -->
+    
+<div class="header" style="background-image:url('head.jpg'); background-repeat:no-repeat; background-position:top;margin:0 auto;
+
+	overflow:hidden;">
+	<div class="wrap">
+		<div style="">
+		<center><h1><font size="100px"><a href="../index.html"><img src="intro.jpg"></a></font></h1><center>
+		</div>
+		<div class="cname" style="font-family: Arial black, Georgia, Serif">
+			
+         <center><h1><font type="Arial black">Chapter-7</h1></center>
+		</div>	
+		<div class="clear"><center><h2><font color="#346fa1">Quick Sort</font></h2></center></div>
+	</div>
+</div>
+   
+ <div class="container" style="background-image:url('tail.jpg');background-repeat:no-repeat;background-position:top;margin:0 auto;
+
+	overflow:hidden;margin-top:-50px">
+    <section id="content" >
+      <div class="inside">
+        <br><br><center><h2>All Questions</h2></center>
+        <div class="left" style="width:100%">
+        <ul class="list">
+		<br><br>
+          <li style="margin-left:130px;width:23%"><img src="icon1.png">
+            <h4><a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
+                       Random-partition & Quicksort
+                         </a></h4>
+			
+
+			<a href="partition.cpp" style="margin-top:-50px" download>Download</a>
+            <br/>
+			<br>
+			<br/>
+			<br>
+          </li>
+          <li style="width:23%"><img src="icon1.png">
+            <a href=""><h4><a href="#portfolioModal2" class="portfolio-link" data-toggle="modal">Quicksort</a></h4></a>
+            <a href="quick.cpp" download>Download</a>
+          <br/><br/>
+			<br>
+			<br>
+		  </li>
+          <li style="width:20%"><img src="icon1.png">
+            <a href=""><h4><a href="#portfolioModal3" class="portfolio-link" data-toggle="modal">Stooge Sort</a></h4></a>
+            <a href="stooge.cpp" download>Download</a>
+			<br/><br/>
+			<br>
+			<br>
+          </li>
+	
+        </ul>
+      </div>
+	  
+	   </div>
+	  <br/>
+	  <br/>
+	  <br/>
+	  
+	  <br/><br/>
+	  <br/><br/>
+	  <br/><br/>
+	  <br/><br/>
+	  <br/>
+	  
+
+	  <center><p class="lf">Copyright &copy;  <a href="http://www.httpcart.com/">httpcart.com</a> - All Rights Reserved</p>
+    <p class="rf">A product of <a href="http://www.httpcart.com/">httpcart.com</a></p></center>
+	</div>
+    </section>
+	
+</div>
+    
+                
+                  
+                    
+                
+           
+   
+
+
+    <!-- Portfolio Modals -->
+    <!-- Use the modals below to showcase details about your portfolio projects! -->
+
+    <!-- Portfolio Modal 1 -->
+	
+    <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true" >
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <!-- Project Details Go Here -->
+                             
+                            <p class="item-intro text-muted">  <pre class='brush: cpp'>#include&ltiostream&gt
+#include&ltcstdlib&gt
+#include&ltvector&gt
+#define swap(x,y) {x=x+y;y=x-y;x=x-y;}
+
+using namespace std;
+
+vector&ltint&gt A;
+
+
+int partition(int p,int r){
+    
+    int i=p+1,j=r;
+    while(true){
+                while(i&ltr&&A[i]&lt=A[p])i++;
+                while(j>p&&A[j]>=A[p])j--;
+                if(i&ltj){swap(A[i],A[j]);}
+                else {if(j>p&&j&lt=r)swap(A[p],A[j]);return j;}
+                }
+    
+    }
+
+int randomize_partition(int p,int r){
+     int i=p+(rand()%(r-p+1));
+     swap(A[p],A[i]);
+     return partition(p,r);
+     }
+
+void quicksort(int p,int r)
+{
+     if(p<r){
+	 	int q=randomize_partition(p,r);
+     	quicksort(p,q-1);
+	 	quicksort(q+1,r);
+     }
+}
+
+int main(){
+    
+    A.push_back(1);
+    A.push_back(5);
+    A.push_back(61);
+    A.push_back(51);
+    A.push_back(41);
+    A.push_back(123);
+    
+    quicksort(0,A.size()-1);
+    for(int i=0;i&ltA.size();i++)cout&lt&ltA[i]&lt&lt"\n";
+    cout&lt&ltendl;
+    system("pause");
+    return 0;
+}
+</p>
+            <br><br>
+<a href="partition.cpp" download><button type="button">Download</button></a>	               
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true" >
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <!-- Project Details Go Here -->
+                             
+                            <p class="item-intro text-muted">  <pre class='brush: cpp'>#include&ltiostream&gt
+#include&ltvector&gt
+#define swap(x,y) {x=x+y;y=x-y;x=x-y;}
+using namespace std;
+
+vector&ltint&gt A;
+
+int partition(int p,int r){
+    
+    int i=p+1,j=r;
+    while(true){
+                while(i&ltr&&A[i]&lt=A[p])i++;
+                while(j>p&&A[j]>=A[p])j--;
+                if(i&ltj){swap(A[i],A[j]);}
+                else {if(j>p&&j&lt=r)swap(A[p],A[j]);return j;}
+                }
+    
+    }
+
+
+void quicksort(int p,int r)
+{
+     if(p&ltr){
+	 	int q=partition(p,r);
+		cout&lt&lt"q:"&lt&ltq&lt&lt"\n";
+        quicksort(p,q-1);
+	    quicksort(q+1,r);
+     }
+}
+
+int main(){
+   // clock_t start=clock(),end;
+    A.push_back(1);
+    A.push_back(1);
+    A.push_back(21);
+    A.push_back(1);
+    
+    quicksort(0,A.size()-1);
+    
+    for(int i=0;i&ltA.size();i++)cout&lt&ltA[i]&lt&ltendl;
+    cout&lt&ltendl;
+    system("pause");
+    return 0;
+    }
+</p>
+             <br><br>
+<a href="quick.cpp" download><button type="button">Download</button></a>	              
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true" >
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <!-- Project Details Go Here -->
+                             
+                            <p class="item-intro text-muted">  <pre class='brush: cpp'>#include&ltiostream&gt
+#include&ltvector&gt
+#define swap(x,y) {x=x+y;y=x-y;x=x-y;}
+
+using namespace std;
+vector&ltint&gt A;
+void stooge_sort(int i,int j){
+     
+    if(A[i]>A[j])swap(A[i],A[j]);
+    if(i+1>=j)return ;
+int    k=(j-i+1)/3;
+    stooge_sort(i,j-k);
+    stooge_sort(i+k,j);
+    stooge_sort(i,j-k); 
+     
+     }
+
+int main(){
+    
+        
+    A.push_back(1);
+    A.push_back(5);
+    A.push_back(61);
+    A.push_back(51);
+    A.push_back(41);
+    A.push_back(1);
+    
+    stooge_sort(0,A.size()-1);
+    for(int i=0;i&ltA.size();i++)cout&lt&ltA[i]&lt&lt"\n";
+    cout&lt&ltendl;
+   
+    
+    cout&lt&ltendl;
+    system("pause");
+    return 0;
+    }
+</p>
+             <br><br>
+<a href="stooge.cpp" download><button type="button">Download</button></a>	              
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+            
+    <!-- jQuery Version 1.11.0 -->
+    <script src="js/jquery-1.11.0.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="js/classie.js"></script>
+    <script src="js/cbpAnimatedHeader.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="js/jqBootstrapValidation.js"></script>
+    <script src="js/contact_me.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/agency.js"></script>
+
+</body>
+
+</html>

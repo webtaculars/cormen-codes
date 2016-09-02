@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script> 
+	$(function(){ // I use jQuery in this example
+      
+           function () { close(){$(".flip").click(function(){
+    $(".panel").slideUp("slow");
+  });
+   });
+   });
+$(document).ready(function(){
+  $(".flip").click(function(){
+    $(".panel").slideToggle("slow");
+  });
+});
+</script>
+   
+
+    <title>Chapter-20</title>
+<link rel="stylesheet" href="css/style.css" type="text/css"/>
+<style>
+.list {list-style-type:none}
+.list > li {display:inline;
+			float:left;}
+</style>
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="css/agency.css" rel="stylesheet">
+
+
+   
+</head>
+
+<body id="page-top" class="index">
+
+    <!-- Navigation -->
+    
+<div class="header" style="background-image:url('head.jpg'); background-repeat:no-repeat; background-position:top;margin:0 auto;
+
+	overflow:hidden;">
+	<div class="wrap">
+		<div style="">
+		<center><h1><font size="100px"><a href="../index.html"><img src="intro.jpg"></a></font></h1><center>
+		</div>
+		<div class="cname" style="font-family: Arial black, Georgia, Serif">
+			
+         <center><h1><font type="Arial black">Chapter-20</h1></center>
+		</div>	
+		<div class="clear"><center><h2><font color="#346fa1">Van emde boas Trees</font></h2></center></div>
+	</div>
+</div>
+   
+ <div class="container" style="background-image:url('tail.jpg');background-repeat:no-repeat;background-position:top;margin:0 auto;
+
+	overflow:hidden;margin-top:-50px">
+    <section id="content" >
+      <div class="inside">
+        <br><br><center><h2>All Questions</h2></center>
+        <div class="left" style="width:100%">
+        <ul class="list">
+		<br/><br/>
+          <li style="margin-left:130px;width:23%"><img src="icon1.png">
+            <h4><a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
+                       fibonacci without list
+                         </a></h4>
+			
+
+			<a href="fibonacci_without_list.cpp" style="margin-top:-50px" download>Download</a>
+            <br/>
+			<br>
+			<br/>
+			<br>
+          </li>
+          <li style="width:23%"><img src="icon1.png">
+            <a href=""><h4><a href="#portfolioModal2" class="portfolio-link" data-toggle="modal">fibonacci</a></h4></a>
+            <a href="fibonacci.cpp" download>Download</a>
+          <br/><br/>
+			<br>
+			<br>
+		  </li>
+         
+	
+        </ul>
+      </div>
+	  
+	   </div>
+	  <br/>
+	  <br/>
+	  <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+	  
+	  
+	  
+	   <center><p class="lf">Copyright &copy;  <a href="http://www.httpcart.com/">httpcart.com</a> - All Rights Reserved</p>
+	   <p class="rf">A product of <a href="http://www.httpcart.com/">httpcart.com</a></p></center>
+      </div>
+    </section>
+	
+</div>
+    
+                
+                  
+                    
+                
+           
+   
+
+
+    <!-- Portfolio Modals -->
+    <!-- Use the modals below to showcase details about your portfolio projects! -->
+
+    <!-- Portfolio Modal 1 -->
+	
+    <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true" >
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <!-- Project Details Go Here -->
+                             
+                            <p class="item-intro text-muted">  <pre class='brush: cpp'>#include&ltiostream&gt
+#include&ltcmath&gt
+#include&ltlist&gt
+#include&ltstack&gt
+#include&ltbitset&gt
+#include&ltvector&gt
+#include&ltstring&gt
+#include&ltalgorithm&gt
+#include &ltmap&gt
+#include&ltutility>
+#define null NULL
+#define fi(sz) for(int i=0;i&ltsz;i++)
+#define fj(sz) for(int j=0;j&ltsz;j++) 
+#define pb push_back
+#define all(v) (v).begin(),(v).end()
+#define SP system("pause");
+#define OP cout&lt&ltendl
+using namespace std;
+
+struct node{
+
+int data;
+int deg;
+bool mark;
+list&ltnode* > child;
+node* sib;
+node* prev;
+node* parent;
+            };
+
+
+class fib_heap{
+      node* min;int num;
+      public:
+     
+      fib_heap(){num=0;min=null;}
+     
+     void fib_consolidate(){
+          node* it1=min;node* it2=min->prev;
+          list&ltnode* > l;
+          int max_degree=0;
+          
+                  
+          while(true){
+                      l.push_back(it1);
+                      if(max_degree<it1->deg){max_degree=it1->deg;}
+                      if(it1==it2)break;
+                      it1=it1->sib;
+                      
+                      }
+                     
+                        max_degree+=1;
+                        int yl=max_degree*l.size()+1;
+                        node* ss=null;
+          vector&ltnode* > v(yl,ss);
+          while(!l.empty()){
+                      node* x=l.front();
+                      l.pop_front();
+                      int degree=x->deg;
+                      while(v[degree]!=null){
+                              node* y=v[degree];
+                             
+                              
+                              if(x->data>y->data){
+                                                  swap(x,y);                    
+                                                  }
+                             fib_link(y,x);
+                              v[degree]=null;
+                              degree+=1;
+                              }//inner while finish
+                          v[degree]=x;
+                          
+                      }//while finish
+          min=null;
+          
+          for(int i=0;i&ltv.size();i++){
+                  if(v[i]!=null){
+                                 if(min==null || v[i]->data&ltmin->data){min=v[i];  }         
+                                 }
+                  }
+          
+          }//conso finish 
+     
+      
+     void swap(node* &x,node* &y) {
+           
+          node* temp=x;
+          x=y;
+          y=temp;
+          }//swap finish
+       
+      
+      void fib_extract_min(){
+             
+           node* z=min;
+                      
+           if(z!=null){
+                      
+                      while(!z->child.empty()){
+                                               cout&lt&lt"err ";OP;
+                                               node *temp=z->child.front();
+                                               z->child.pop_front();
+                                               fib_insert_ii(temp);
+                                               }
+                      { node* prev=z->prev;
+                       node* next=z->sib;
+                       prev->sib=next;
+                       next->prev=prev;
+                       min=next;
+                       }
+                       
+                       if(z==z->sib){min=null;}
+                       else{ 
+                            
+                             fib_consolidate();  }
+                      num-=1;
+                       }
+           }//fin extract min 
+      
+      void fib_link(node* z,node* y){
+             node* prev=z->prev;
+                       node* next=z->sib;
+                       prev->sib=next;
+                       next->prev=prev;
+                       z->parent=y;
+                       if(!y->child.empty()){
+                       z->sib=y->child.front();
+                       y->child.front()->prev=z;
+                       z->prev=y->child.back();
+                       y->child.back()->sib=z;
+                       }else{z->sib=null;z->prev=null;}
+                       z->mark=false;
+                    y->child.push_front(z);
+                    y->deg+=1;   
+           }//fib link close
+      
+     void cut(node* x,node* y){
+          y->child.remove(x);
+          fib_insert_ii(x);
+          x->mark=false;
+          }//cut finish
+      
+     void cascading_cut(node* y){
+          node* z=y->parent;
+          if(z!=null){
+                      if(!y->mark){y->mark=true;}
+                      else{
+                           cut(y,z);
+                           cascading_cut(z);
+                           }
+                      }
+          }//ccut finish 
+      
+     void fib_decrease_key(node* x,int k){
+          
+          if(x->data<k){cout&lt&lt"greater key error"; return ;}
+          x->data=k;
+          node* y=x->parent;
+          
+          if(y!=null && y->data > x->data){
+                     cut(x,y);
+                     cascading_cut(y);
+                     }
+          if(x->data&ltmin->data){min=x;}
+          }//decrease key finish 
+      
+      void fib_delete(node* x){
+           int p=min->data-1;
+           fib_decrease_key(x,p);
+           fib_extract_min();
+           }//fib delete finish
+      
+     
+    
+     node* make_node(int k){
+           node* temp=new node;
+           temp->data=k;
+           temp->deg=0;
+           temp->mark=false;
+           temp->parent=null;
+           temp->prev=null;
+           temp->sib=null;
+        return temp;   
+           }//make node finish 
+      
+     void fib_insert(int k){
+           node* p=make_node(k);
+          fib_insert_ii(p);
+          if(min==null || min->data>p->data){min=p;}
+          num+=1;
+          }//fin insert finish 
+      
+     void fib_insert_ii(node* p){
+          node* prev=null;
+          if(min!=null){
+          prev=min->prev;
+          prev->sib=p;
+          p->prev=prev;
+          min->prev=p;
+          p->sib=min;
+          }else{p->prev=p;p->sib=p;}
+          p->parent=null;
+           }//insert ii  finish 
+      
+     list&ltnode* > gethead(){
+                node *it1=min,*it2=min->prev;
+                list&ltnode* > l;
+                while(true){
+                      l.push_back(it1);
+                      if(it1==it2)break;
+                      it1=it1->sib;
+                      }
+                return  l;} 
+      };
+      
+      
+      
+int main ()
+{
+   int data;fib_heap bh;
+    do{cin>>data;bh.fib_insert(data);}while(data!=18);
+    //fib_heap bh1;
+    //do{cin>>data;bh1.fib_insert(data);}while(data!=12);
+    //bh.binomial_union(bh.gethead(),bh1.gethead());
+    list&ltnode* > p=bh.gethead();OP;OP;
+    while(!p.empty()){cout&lt&ltp.front()->data;OP;p.pop_front();}
+    OP;
+    bh.fib_extract_min();
+                             list&ltnode* > pp=bh.gethead();
+     OP; bh.fib_decrease_key(pp.front(),1);
+                      for(list&ltnode* > :: iterator it=pp.begin();it!=pp.end();it++){cout&lt&lt" d "&lt&lt(*it)->data;OP;}
+           
+   
+  /*
+    bh.fib_extract_min();
+    list&ltnode* > p1=bh.gethead();OP;OP;
+    while(!p1.empty()){cout&lt&ltp1.front()->data;OP;p1.pop_front();}
+    OP;
+    bh.fib_extract_min();
+    list&ltnode* > p2=bh.gethead();OP;OP;
+    while(!p2.empty()){cout&lt&ltp2.front()->data;OP;p2.pop_front();}
+    OP;   
+*/
+cout&lt&ltendl;system("pause");
+    return 0;
+    }
+</p>
+             <br><br>
+<a href="fibonacci_without_list.cpp" download><button type="button">Download</button></a>	              
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true" >
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <!-- Project Details Go Here -->
+                             
+                            <p class="item-intro text-muted">  <pre class='brush: cpp'>#include&ltiostream>
+#include&ltcmath>
+#include&ltlist>
+#include&ltstack>
+#include&ltbitset>
+#include&ltvector>
+#include&ltstring>
+#include&ltalgorithm>
+#include &ltmap>
+#include&ltutility>
+#define null NULL
+#define fi(sz) for(int i=0;i&ltsz;i++)
+#define fj(sz) for(int j=0;j&ltsz;j++) 
+#define pb push_back
+#define all(v) (v).begin(),(v).end()
+#define SP system("pause");
+#define OP cout&lt&ltendl
+using namespace std;
+
+struct node{
+
+int data;
+int deg;
+bool mark;
+list&ltnode* > child;
+node* sib;
+node* prev;
+node* parent;
+            };
+
+
+class fib_heap{
+      node* min;int num;list&ltnode* > root;
+      public:
+     
+      fib_heap(){num=0;min=null;}
+     
+     void fib_consolidate(){
+                   
+                        int yl=log10(num*num)/log10(2);yl=yl*yl+1;
+                        node* ss=null;
+          vector<node* > v(yl,ss);
+          while(!root.empty()){
+                      node* x=root.front();
+                      root.pop_front();
+                      int degree=x->deg;
+                      while(v[degree]!=null){
+                              node* y=v[degree];
+                              if(x->data>y->data){
+                                                  swap(x,y);                    
+                                                  }
+                             fib_link(y,x);
+                              v[degree]=null;
+                              degree+=1;
+                              }//inner while finish
+                          v[degree]=x;
+                          
+                      }//while finish
+          min=null;
+          
+          for(int i=0;i&ltv.size();i++){
+                  if(v[i]!=null){root.push_back(v[i]);
+                                 if(min==null || v[i]->data<min->data){min=v[i];  }         
+                                 }
+                  }
+          
+          }//conso finish 
+     
+      
+     void swap(node* &x,node* &y) {
+           
+          node* temp=x;
+          x=y;
+          y=temp;
+          }//swap finish
+       
+      
+      void fib_extract_min(){
+             
+           node* z=min;
+                      
+           if(z!=null){
+                      
+                      while(!z->child.empty()){
+                                               node *temp=z->child.front();
+                                               z->child.pop_front();
+                                               fib_insert_ii(temp);
+                                               root.push_back(temp);
+                                               }
+                      {
+                       node* prev=z->prev;
+                       node* next=z->sib;
+                       prev->sib=next;
+                       next->prev=prev;
+                       min=next;
+                       root.remove(z);
+                       }
+                       
+                       if(z==z->sib){min=null;}
+                       else{ 
+                            
+                             fib_consolidate();  }
+                      num-=1;
+                       }
+           }//fin extract min 
+      
+      void fib_link(node* z,node* y){
+             node* prev=z->prev;
+                       node* next=z->sib;
+                       prev->sib=next;
+                       next->prev=prev;
+                       z->parent=y;
+                       if(!y->child.empty()){
+                       z->sib=y->child.front();
+                       y->child.front()->prev=z;
+                       z->prev=y->child.back();
+                       y->child.back()->sib=z;
+                       }else{z->sib=null;z->prev=null;}
+                       z->mark=false;
+                    y->child.push_front(z);
+                    y->deg+=1;   
+           }//fib link close
+      
+     void cut(node* x,node* y){
+          y->child.remove(x);
+          fib_insert_ii(x);
+          root.push_back(x);
+          x->mark=false;
+          }//cut finish
+      
+     void cascading_cut(node* y){
+          node* z=y->parent;
+          if(z!=null){
+                      if(!y->mark){y->mark=true;}
+                      else{
+                           cut(y,z);
+                           cascading_cut(z);
+                           }
+                      }
+          }//ccut finish 
+      
+     void fib_decrease_key(node* x,int k){
+          
+          if(x->data&ltk){cout&lt&lt"greater key error"; return ;}
+          x->data=k;
+          node* y=x->parent;
+          
+          if(y!=null && y->data > x->data){
+                     cut(x,y);
+                     cascading_cut(y);
+                     }
+          if(x->data<min->data){min=x;}
+          }//decrease key finish 
+      
+      void fib_delete(node* x){
+           int p=min->data-1;
+           fib_decrease_key(x,p);
+           fib_extract_min();
+           }//fib delete finish
+      
+     
+    
+     node* make_node(int k){
+           node* temp=new node;
+           temp->data=k;
+           temp->deg=0;
+           temp->mark=false;
+           temp->parent=null;
+           temp->prev=null;
+           temp->sib=null;
+        return temp;   
+           }//make node finish 
+      
+     node* fib_insert(int k){
+           node* p=make_node(k);
+          fib_insert_ii(p);
+          if(min==null || min->data>p->data){min=p;}
+          root.push_back(p);
+          num+=1;
+          return p;
+          }//fin insert finish 
+      
+     void fib_insert_ii(node* p){
+          node* prev=null;
+          if(min!=null){
+          prev=min->prev;
+          prev->sib=p;
+          p->prev=prev;
+          min->prev=p;
+          p->sib=min;
+          }else{p->prev=p;p->sib=p;}
+          p->parent=null;
+           }//insert ii  finish 
+      
+     list<node* > gethead(){
+                return  root;} 
+      };
+      
+      
+      
+int main ()
+{
+   int data;fib_heap bh;
+    
+    
+    bh.fib_insert(0);
+    bh.fib_extract_min();
+    bh.fib_insert(4);
+    node* p1=bh.fib_insert(8);
+    bh.fib_extract_min();
+    node* p2=bh.fib_insert(8);
+    bh.fib_extract_min();
+    bh.fib_insert(7);
+    bh.fib_insert(4);
+    bh.fib_insert(2);
+    bh.fib_extract_min();
+    node* opp=bh.fib_insert(6);
+    bh.fib_decrease_key(p2,7);
+    bh.fib_extract_min();
+    bh.fib_insert(10);
+    bh.fib_decrease_key(opp,2);
+    
+                             list&ltnode* > pp=bh.gethead();
+     OP;// bh.fib_decrease_key(pp.front(),1);
+                      for(list<node* > :: iterator it=pp.begin();it!=pp.end();it++){cout&lt&lt" d "&lt&lt(*it)->data;OP;}
+           
+   
+  /*
+    bh.fib_extract_min();
+    list&ltnode* > p1=bh.gethead();OP;OP;
+    while(!p1.empty()){cout&lt&ltp1.front()->data;OP;p1.pop_front();}
+    OP;
+    bh.fib_extract_min();
+    list<node* > p2=bh.gethead();OP;OP;
+    while(!p2.empty()){cout&lt&ltp2.front()->data;OP;p2.pop_front();}
+    OP;   
+*/
+cout&lt&ltendl;system("pause");
+    return 0;
+    }
+
+</p>
+             <br><br>
+<a href="fibonacci.cpp" download><button type="button">Download</button></a>	              
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true" >
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <!-- Project Details Go Here -->
+                             
+                            <p class="item-intro text-muted">  <pre class='brush: cpp'>#include&ltiostream&gt
+#include&ltvector&gt
+
+
+using namespace std;
+
+int merge_inversion(int p,int q,int r);
+
+int count_inversion(int p,int  r);
+vector&ltint&gt A;
+ 
+int main()
+{
+    int n;
+    cin>>n;A.push_back(0);
+    for(int i=1;i&lt=n;i++){int y;cin>>y;A.push_back(y);
+}
+    cout&lt&ltendl&lt&ltcount_inversion(1,n)&lt&ltendl&lt&ltendl;
+    cout&lt&ltendl&lt&lt"printing arrary"&lt&ltendl;
+    for(int i=1;i&lt=n;i++){cout&lt&ltA[i]&lt&lt"\t";}
+    cout&lt&ltendl;
+        system("pause");
+    return 0;
+    }
+    
+    
+ int count_inversion(int  p,int  r){
+     int inversion=0;
+     if(p<r){
+int             q=(p+r)/2;
+             inversion=inversion+count_inversion(p,q);
+             inversion=inversion+count_inversion(q+1,r);
+             inversion=inversion+merge_inversion(p,q,r);
+             
+             }
+     return inversion;
+     }   
+
+int merge_inversion(int p,int q,int r){
+    
+    int n1=q-p+1;int n2=r-q;
+
+vector&ltint&gt l1;
+vector&ltint&gt l2;
+l1.resize(n1+2);
+l2.resize(n2+2);
+
+    for(int i=1;i&lt=n1;i++){l1[i]=A[p+i-1];}
+    for(int i=1;i&lt=n2;i++){l2[i]=A[q+i];}
+    
+    l1[n1+1]=99999970;
+    l2[n2+1]=99999970;
+    
+    int i=1,j=1;
+    
+    int inversion=0;bool counts=false;
+    
+    for(int k=p;k&lt=r;k++){
+            
+            if(!counts && l2[j]<l1[i]){inversion = inversion+n1+1-i;counts=true;}
+            if(l1[i]&lt=l2[j]){A[k]=l1[i];i++;}
+            else{A[k]=l2[j];j++;counts=false;}
+            }
+    
+    return inversion;
+    
+    }</p>
+            <br><br>
+<a href="count.cpp" download><button type="button">Download</button></a>	               
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+            
+    <!-- jQuery Version 1.11.0 -->
+    <script src="js/jquery-1.11.0.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="js/classie.js"></script>
+    <script src="js/cbpAnimatedHeader.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="js/jqBootstrapValidation.js"></script>
+    <script src="js/contact_me.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/agency.js"></script>
+
+</body>
+
+</html>
